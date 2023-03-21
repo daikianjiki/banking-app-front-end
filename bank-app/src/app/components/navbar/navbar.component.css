@@ -1,18 +1,34 @@
-ul {
+#navbar {
+  display: flex;
+  height: 50px;
+  background-color: #e1bd27;
+  display: flex;
+}
+
+#navbar > img {
+  height: 100%;
+}
+
+#navbar > ul {
+  flex-grow: 1;
+  display: flex;
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
 }
 
-li {
+#navbar > ul > li {
   float: left;
+  display: flex;
+  align-items: center;
+  width: 20%;
+  align-content: center;
 }
 
-li a {
-  display: block;
-  padding: 8px;
-  background-color: #e1bd27;
+#navbar > ul > li > a {
+  width: 100%;
+  text-align: center;
 }
 
 li a:hover:not(.active) {

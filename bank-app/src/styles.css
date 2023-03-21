@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Reset Styles */
+
+* {
+
+}
+body {
+    width: 100%;
+    box-sizing: content-box;
+    padding: 0px;
+    margin: 0px;
+}
