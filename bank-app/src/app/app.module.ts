@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 import { AppComponent } from './app.component';
 import { FrontComponent } from './pages/front/front.component';
@@ -21,7 +22,7 @@ import { AdvertisementComponent } from './components/advertisement/advertisement
 import { SlideShowComponent } from './components/slide-show/slide-show.component';
 import { CreateAccountComponent } from './components/create-account/create-account.component';
 import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
-import { UpdateAccountComponent } from './componenets/update-account/update-account.component';
+import { UpdateAccountComponent } from './components/update-account/update-account.component';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
 
 @NgModule({
@@ -50,7 +51,8 @@ import { UpdateUserComponent } from './components/update-user/update-user.compon
     UpdateUserComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
