@@ -22,13 +22,10 @@ import { AdvertisementComponent } from './components/advertisement/advertisement
 import { SlideShowComponent } from './components/slide-show/slide-show.component';
 import { CreateAccountComponent } from './components/create-account/create-account.component';
 import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
-<<<<<<< HEAD
-// import { UpdateAccountComponent } from './componenets/update-account/update-account.component';
-=======
 import { UpdateAccountComponent } from './components/update-account/update-account.component';
->>>>>>> ce7b47eaaac403b786e6b7fb5f21299f9a8861db
 import { UpdateUserComponent } from './components/update-user/update-user.component';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -60,11 +57,9 @@ import { AppRoutingModule } from './app-routing.module';
 
   imports: [
     BrowserModule,
-<<<<<<< HEAD
-    AppRoutingModule
-=======
-    HttpClientModule
->>>>>>> ce7b47eaaac403b786e6b7fb5f21299f9a8861db
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   exports: [
