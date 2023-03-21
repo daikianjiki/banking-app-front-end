@@ -21,8 +21,10 @@ import { AdvertisementComponent } from './components/advertisement/advertisement
 import { SlideShowComponent } from './components/slide-show/slide-show.component';
 import { CreateAccountComponent } from './components/create-account/create-account.component';
 import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
-import { UpdateAccountComponent } from './componenets/update-account/update-account.component';
+// import { UpdateAccountComponent } from './componenets/update-account/update-account.component';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
+import { AppRoutingModule } from './app-routing.module';
+
 
 @NgModule({
   declarations: [
@@ -46,13 +48,19 @@ import { UpdateUserComponent } from './components/update-user/update-user.compon
     SlideShowComponent,
     CreateAccountComponent,
     DeleteAccountComponent,
-    UpdateAccountComponent,
+    // UpdateAccountComponent,
     UpdateUserComponent
+
   ],
+
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
+  exports: [
+    NavbarComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
