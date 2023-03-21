@@ -24,6 +24,7 @@ import { CreateAccountComponent } from './components/create-account/create-accou
 import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
 import { UpdateAccountComponent } from './components/update-account/update-account.component';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { UpdateUserComponent } from './components/update-user/update-user.compon
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
