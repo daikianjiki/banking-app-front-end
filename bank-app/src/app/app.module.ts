@@ -24,7 +24,9 @@ import { CreateAccountComponent } from './components/create-account/create-accou
 import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
 import { UpdateAccountComponent } from './components/update-account/update-account.component';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
+import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -48,15 +50,21 @@ import { FormsModule } from '@angular/forms';
     SlideShowComponent,
     CreateAccountComponent,
     DeleteAccountComponent,
-    UpdateAccountComponent,
+    // UpdateAccountComponent,
     UpdateUserComponent
+
   ],
+
   imports: [
     BrowserModule,
+    AppRoutingModule,
     HttpClientModule,
     FormsModule
   ],
   providers: [],
+  exports: [
+    NavbarComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
