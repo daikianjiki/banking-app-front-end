@@ -1,0 +1,19 @@
+form > div {
+    margin: 0px;
+    padding: 0px;
+}
+form > div > input {
+    min-width: 7rem;
+}
+
+ul {
+    list-style-type: none;
+}
+ul > li {
+    padding-bottom: 0.25rem;
+}
+
+button {
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+}

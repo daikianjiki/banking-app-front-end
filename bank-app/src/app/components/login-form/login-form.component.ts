@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-login-form',
@@ -9,6 +9,9 @@ export class LoginFormComponent {
 
   username: string = "";
   password: string = "";
+
+  @Input()
+  showHeader:   boolean = true;
 
   login() {
     //create a function where if username and password matches the username and password stored, access log in.
