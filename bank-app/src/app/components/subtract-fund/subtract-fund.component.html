@@ -1,1 +1,15 @@
-<p>subtract-fund works!</p>
+<form>
+    <div>
+        <label style="margin-left: 25px;" class="col-12">Input Amount:</label>
+        <input style="margin-left: 25px;" type = "number" min="0" value="" [(ngModel)]="inputAmount">
+        <p style="margin-left: 25px;"> {{inputAmount}} </p>
+        <button style="margin-left: 25px;" (click) = "addAmount">Withdrawal</button>
+    </div>
+</form>
+
+
+
+
+
+
+<!-- <button style="margin-left: 145px;">Withdrawl</button> -->

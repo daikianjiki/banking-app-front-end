@@ -1,1 +1,30 @@
-<p>transaction works!</p>
+<br><br>
+
+<div class="d-flex">
+	<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical">
+		<li ngbNavItem="top">
+			<a ngbNavLink>Deposit</a>
+			<ng-template ngbNavContent>
+				<app-add-fund></app-add-fund>
+			</ng-template>
+		</li>
+		<li ngbNavItem="middle">
+			<a ngbNavLink>Withdrawl</a>
+			<ng-template ngbNavContent>
+				<app-subtract-fund></app-subtract-fund>
+			</ng-template>
+		</li>
+		<li ngbNavItem="bottom">
+			<a ngbNavLink>All Transactions</a>
+			<ng-template ngbNavContent>
+				<p>
+				TODO: add all transactions!
+				</p>
+			</ng-template>
+		</li>
+	</ul>
+
+	<div [ngbNavOutlet]="nav" class="ms-4"></div>
+</div>
+
+<pre>Active: {{ active }}</pre>
