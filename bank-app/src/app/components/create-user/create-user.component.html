@@ -1,25 +1,25 @@
 <p>create-user works!</p>
 <form>
     Username: <br>
-    <input type="text" [(ngModel)]='username' [ngModelOptions]="{standalone: true}">
+    <input type="text" [(ngModel)]='user.username' [ngModelOptions]="{standalone: true}">
     <br>
     Password: <br>
-    <input type="password" [(ngModel)]='password' [ngModelOptions]="{standalone: true}">
+    <input type="password" [(ngModel)]='user.password' [ngModelOptions]="{standalone: true}">
     <br>
     First Name: <br>
-    <input type="text" [(ngModel)]='firstName' [ngModelOptions]="{standalone: true}">
+    <input type="text" [(ngModel)]='user.firstName' [ngModelOptions]="{standalone: true}">
     <br>
     Last Name: <br>
-    <input type="text" [(ngModel)]='lastName' [ngModelOptions]="{standalone: true}">
+    <input type="text" [(ngModel)]='user.lastName' [ngModelOptions]="{standalone: true}">
     <br>
     Address: <br>
-    <input type="text" [(ngModel)]='address' [ngModelOptions]="{standalone: true}">
+    <input type="text" [(ngModel)]='user.streetAddress1' [ngModelOptions]="{standalone: true}">
     <br>
     Mobile Phone: <br>
-    <input type="tel" [(ngModel)]='phone' [ngModelOptions]="{standalone: true}">
+    <input type="tel" [(ngModel)]='user.phoneNumber' [ngModelOptions]="{standalone: true}">
     <br>
     Email: <br>
-    <input type="email" [(ngModel)]='email' [ngModelOptions]="{standalone: true}">
+    <input type="email" [(ngModel)]='user.email' [ngModelOptions]="{standalone: true}">
     <br><br>
     <button (click) = 'createUser()'>Submit</button>
     <!--when you push on submit, there maybe a functionality where it redirects the user to a user page with their updated information?-->
