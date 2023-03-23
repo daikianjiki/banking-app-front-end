@@ -26,14 +26,17 @@ export class CreateUserComponent {
   }
   message : string = "Your registration was successful!";
   show : boolean = false;
+  show2 : boolean = true;
   
   constructor(private userService : UserService) {}
 
   createUser() : void {
-    this.userService.postUser(this.user).subscribe(json => {this.user =json; 
+    this.userService.postUser(this.user).subscribe(json => {
+      this.user =json; 
       console.log(this.user); 
       this.newUser = this.user; 
       console.log(this.newUser)});
       this.show = true;
+      this.show2 = false;
   }
 }

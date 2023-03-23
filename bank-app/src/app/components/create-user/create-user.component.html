@@ -1,7 +1,10 @@
 <h2>Your Details:</h2>
-<app-user-form  [user] = 'newUser'></app-user-form>
-<h2>Register:</h2>
-<form class="col-sm-4">
+<div>
+    <app-user-form [user] = 'newUser'></app-user-form>
+</div>
+<ngb-alert *ngIf="show">{{ message }}</ngb-alert>
+<form class="col-sm-4" *ngIf="show2">
+    <h2>User Registeration</h2> <br>
     Username: <br>
     <input type="text" class="form-control" [(ngModel)]='user.username' [ngModelOptions]="{standalone: true}">
     <br>
@@ -19,4 +22,3 @@
     <br>
     <button type="button" class="btn btn-primary" (click) = 'createUser()'>Submit</button>
 </form>
-<ngb-alert *ngIf="show">{{ message }}</ngb-alert>
