@@ -1,23 +1,22 @@
 <h2>Your Details:</h2>
 <app-user-form  [user] = 'newUser'></app-user-form>
 <h2>Register:</h2>
-<form>
+<form class="col-sm-4">
     Username: <br>
-    <input type="text" [(ngModel)]='user.username' [ngModelOptions]="{standalone: true}">
+    <input type="text" class="form-control" [(ngModel)]='user.username' [ngModelOptions]="{standalone: true}">
     <br>
     Password: <br>
-    <input type="password" [(ngModel)]='user.password' [ngModelOptions]="{standalone: true}">
+    <input type="password" class="form-control" [(ngModel)]='user.password' [ngModelOptions]="{standalone: true}">
     <br>
     Address: <br>
-    <input type="text" [(ngModel)]='user.streetAddress1' [ngModelOptions]="{standalone: true}">
+    <input type="text" class="form-control" [(ngModel)]='user.streetAddress1' [ngModelOptions]="{standalone: true}">
     <br>
     Mobile Phone: <br>
-    <input type="tel" [(ngModel)]='user.phoneNumber' [ngModelOptions]="{standalone: true}">
+    <input type="tel" class="form-control" [(ngModel)]='user.phoneNumber' [ngModelOptions]="{standalone: true}">
     <br>
     Email: <br>
-    <input type="email" [(ngModel)]='user.email' [ngModelOptions]="{standalone: true}">
-    <br><br>
+    <input type="email" class="form-control" [(ngModel)]='user.email' [ngModelOptions]="{standalone: true}">
+    <br>
     <button type="button" class="btn btn-primary" (click) = 'createUser()'>Submit</button>
 </form>
-<br>
 <ngb-alert *ngIf="show">{{ message }}</ngb-alert>
