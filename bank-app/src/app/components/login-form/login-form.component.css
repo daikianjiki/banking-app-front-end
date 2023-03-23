@@ -1,13 +1,27 @@
+#login-form {
+    text-align: center;
+}
+#login-header {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
 form > div {
     margin: 0px;
     padding: 0px;
 }
+
 form > div > input {
     min-width: 7rem;
+    margin: auto;
 }
 
 ul {
     list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
 }
 ul > li {
     padding-bottom: 0.25rem;
