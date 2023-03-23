@@ -38,3 +38,8 @@ body {
     width: 100%;
     font-size: 18px;
 }
+
+.main-content {
+    min-height: 100vh;
+    display: block;
+}

@@ -19,7 +19,7 @@
 }
 
 .card-body {
-    background: var(--bs-gray-200);
+    background: var(--bs-gray-400);
     min-height: 13rem;
 }
 
