@@ -1,0 +1,28 @@
+footer {
+    background-color: var(--bs-gray-800);
+    min-height: 10rem;
+    margin: 0px;
+    padding-bottom: 5rem;
+}
+
+footer > h2 {
+    padding: 1rem;
+    color: white;
+    font-size: 1.5rem;
+}
+
+#footer-legal {
+    padding: 2rem;
+    color: var(--bs-gray-400);
+    font-size: 1rem;
+}
+
+#footer-social-links {
+    text-align: center;
+}
+
+#footer-social-links > a > svg {
+    margin: 1rem;
+    width: 2rem;
+    height: 2rem;
+}

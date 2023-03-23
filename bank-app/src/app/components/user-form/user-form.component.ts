@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { User } from 'src/app/model/user';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-user-form',
@@ -7,4 +9,15 @@ import { Component } from '@angular/core';
 })
 export class UserFormComponent {
 
+  @Input()
+  user : User = {
+    id: 0,
+    username: '',
+    password: '',
+    streetAddress1: '',
+    phoneNumber: 0,
+    email: ''
+  };
+  
+  constructor() {}
 }

@@ -8,16 +8,17 @@ import { Component, OnInit } from '@angular/core';
 export class AddFundComponent implements OnInit {
 
   inputAmount: Number = 0;
+  buttonClickMessage = "";
 
-  addAmount(): void{
-    
+  depositAmount() {
+    this.buttonClickMessage = "Thanks for your deposit!";
   }
 
 
   constructor() { }
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    
   }
 
 }

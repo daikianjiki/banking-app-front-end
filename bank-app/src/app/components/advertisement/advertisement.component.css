@@ -1,0 +1,32 @@
+#advert-box {
+    margin: 0px;
+    padding-bottom: 3rem;
+}
+.card-container {
+    min-width: 5rem;
+    padding-bottom: 2rem;
+}
+.card-header {
+    text-align: center;
+    font-size: 1.2rem;
+    padding: .5rem;
+    letter-spacing: 7px;
+    font-weight: bold;
+}
+
+.card img {
+    padding: .5rem;
+}
+
+.card-body {
+    background: var(--bs-gray-200);
+    min-height: 13rem;
+}
+
+.promo-box {
+}
+
+.promo-box > .card {
+    max-width: 20rem;
+    margin: auto;
+}

@@ -3,6 +3,19 @@
     margin: 0px;
 }
 
+#front-page-top {
+    margin-bottom: 3rem;
+    margin-top: 1rem;
+}
 #front-page-login {
-    
+    padding-top: 5rem;
+}
+
+#front-page-slide-show {
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+
+#front-page-advertisement {
+    padding-bottom: 5rem;
 }

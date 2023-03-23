@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -6,7 +6,12 @@ import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './transaction.component.html',
   styleUrls: ['./transaction.component.css']
 })
-export class TransactionComponent {
+export class TransactionComponent implements OnInit {
+
+  constructor() { }
+  ngOnInit(): void {
+    
+  }
   active = 'top';
 
 }

@@ -8,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class SubtractFundComponent implements OnInit {
 
   inputAmount: Number = 0;
+  buttonClickMessage = "";
 
-  addAmount(): void{
+  withdrawAmount() {
+    this.buttonClickMessage = "Thanks for your withdrawl!"
   }
 
 constructor() { }
