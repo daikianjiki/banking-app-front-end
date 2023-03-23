@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { User } from 'src/app/model/user';
 import { UserService } from 'src/app/services/user.service';
 
@@ -8,22 +8,32 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./create-user.component.css']
 })
 export class CreateUserComponent {
-  username: string = '';
-  password: string = '';
-  firstName: string = '';
-  lastName: string = '';
-  address: string = '';
-  phone: number = 0;
-  email: string = '';
-
+  user : User = {
+    id: 0,
+    username: '',
+    password: '',
+    streetAddress1: '',
+    phoneNumber: 0,
+    email: ''
+  }
+  newUser : User = {
+    id: 0,
+    username: '',
+    password: '',
+    streetAddress1: '',
+    phoneNumber: 0,
+    email: ''
+  }
+  message : string = "Your registration was successful!";
+  show : boolean = false;
+  
   constructor(private userService : UserService) {}
 
   createUser() : void {
-    let user : User = {id: 0, username: this.username, password: this.password, 
-    firstName: this.firstName, lastName: this.lastName, streetAddress1: this.address,
-    phoneNumber: this.phone, email: this.email};
-    console.log(user);
-    console.log(this.userService.postUser(user).subscribe(json => json));
+    this.userService.postUser(this.user).subscribe(json => {this.user =json; 
+      console.log(this.user); 
+      this.newUser = this.user; 
+      console.log(this.newUser)});
+      this.show = true;
   }
-
 }

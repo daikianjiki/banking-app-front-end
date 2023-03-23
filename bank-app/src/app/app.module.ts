@@ -27,6 +27,7 @@ import { UpdateUserComponent } from './components/update-user/update-user.compon
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReadUserComponent } from './components/read-user/read-user.component';
 
 @NgModule({
   declarations: [
@@ -51,8 +52,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CreateAccountComponent,
     DeleteAccountComponent,
     // UpdateAccountComponent,
-    UpdateUserComponent
-
+    UpdateUserComponent,
+    ReadUserComponent
   ],
 
   imports: [
