@@ -25,11 +25,12 @@ import { UpdateUserComponent } from './components/update-user/update-user.compon
 // import { AppRoutingModule } from './app-routing.module';
 
 const routes: Routes = [
-    {path: 'front', component: FrontComponent},
+    {path: 'home', component: FrontComponent},
     {path: 'account', component: AccountComponent},
     {path: 'transaction', component: TransactionComponent},
     {path: 'user', component: UserComponent},
-    {path: 'login', component: LoginComponent}
+    {path: 'login', component: LoginComponent},
+    {path: '**', component: FrontComponent},
 ];
 
 @NgModule({
