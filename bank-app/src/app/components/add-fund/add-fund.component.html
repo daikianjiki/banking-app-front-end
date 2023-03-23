@@ -1,1 +1,10 @@
-<p>add-fund works!</p>
+
+
+    <div>
+        <label style="margin-left: 25px;" class="col-12">Input Amount:</label>
+        <input style="margin-left: 25px;" type = "number" min="0" value="" [(ngModel)]="inputAmount">
+        <p style="margin-left: 25px;">$ {{inputAmount}} </p>
+        <button style="margin-left: 25px; background-color:rgb(132, 177, 241); border-color: rgb(255, 3, 3);color:white" class="btn btn-primary btn-lg" (click) = "depositAmount()">Deposit
+        </button>
+        <p>{{buttonClickMessage}}</p>
+    </div>
