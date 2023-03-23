@@ -28,6 +28,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReadUserComponent } from './components/read-user/read-user.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { ReadUserComponent } from './components/read-user/read-user.component';
     DeleteAccountComponent,
     // UpdateAccountComponent,
     UpdateUserComponent,
-    ReadUserComponent
+    ReadUserComponent,
+    FooterComponent
   ],
 
   imports: [

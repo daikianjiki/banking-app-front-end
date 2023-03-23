@@ -7,16 +7,44 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink = "home">Home</a>
+            <a 
+                class="nav-link "
+                [class.active]="selected == 'home'"
+                [attr.aria-current]="selected == 'home'" 
+                (click)="setSelected('home')"
+                routerLink = "home">
+                Home
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink = "account">Account</a>
+            <a 
+                class="nav-link"
+                [class.active]="selected == 'account'"
+                [attr.aria-current]="selected == 'account'" 
+                (click)="setSelected('account')"
+                routerLink = "account">
+                Account
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink = "transaction">Transactions</a>
+            <a 
+                class="nav-link" 
+                [class.active]="selected == 'transaction'"
+                [attr.aria-current]="selected == 'transaction'" 
+                (click)="setSelected('transaction')"
+                routerLink = "transaction">
+                Transactions
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink = "login">Login/Logout</a>
+            <a 
+                class="nav-link" 
+                [class.active]="selected == 'login'"
+                [attr.aria-current]="selected == 'login'"
+                (click)="setSelected('login')"
+                routerLink = "login">
+                Login/Logout
+            </a>
           </li>
         </ul>
         <form class="d-flex" role="search">
