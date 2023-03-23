@@ -12,8 +12,6 @@ export class CreateUserComponent {
     id: 0,
     username: '',
     password: '',
-    firstName: '',
-    lastName: '',
     streetAddress1: '',
     phoneNumber: 0,
     email: ''
@@ -22,12 +20,12 @@ export class CreateUserComponent {
     id: 0,
     username: '',
     password: '',
-    firstName: '',
-    lastName: '',
     streetAddress1: '',
     phoneNumber: 0,
     email: ''
   }
+  message : string = "Your registration was successful!";
+  show : boolean = false;
   
   constructor(private userService : UserService) {}
 
@@ -36,5 +34,6 @@ export class CreateUserComponent {
       console.log(this.user); 
       this.newUser = this.user; 
       console.log(this.newUser)});
+      this.show = true;
   }
 }

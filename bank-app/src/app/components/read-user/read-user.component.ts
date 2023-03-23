@@ -8,16 +8,4 @@ import { User } from 'src/app/model/user';
 })
 export class ReadUserComponent {
 
-  @Input()  
-  user: User = {
-    id: 0,
-    username: '',
-    password: '',
-    firstName: '',
-    lastName: '',
-    streetAddress1: '',
-    phoneNumber: 0,
-    email: ''
-  };
-
 }

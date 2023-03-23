@@ -14,8 +14,6 @@ export class UserFormComponent {
     id: 0,
     username: '',
     password: '',
-    firstName: '',
-    lastName: '',
     streetAddress1: '',
     phoneNumber: 0,
     email: ''
