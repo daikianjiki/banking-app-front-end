@@ -1,7 +1,10 @@
-<div class="col-sm-4">
+<div class="col-sm-4" id="details">
     <p>Username: {{user.username}}</p>
     <p>Password: {{user.password}}</p>
     <p>Address: {{user.streetAddress1}}</p>
     <p>Phone Number: {{user.phoneNumber}}</p>
     <p>Email: {{user.email}}</p>
+</div>
+<div>
+    <app-update-user [id] = 'user.id'></app-update-user>
 </div>
