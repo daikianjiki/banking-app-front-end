@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { User } from 'src/app/model/user';
 import { UserService } from 'src/app/services/user.service';
 
@@ -7,8 +7,9 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.css']
 })
-export class UserFormComponent implements OnInit{
+export class UserFormComponent {
 
+  @Input()
   user : User = {
     id: 0,
     username: '',
@@ -19,14 +20,6 @@ export class UserFormComponent implements OnInit{
     phoneNumber: 0,
     email: ''
   };
-  constructor(private userService: UserService) {}
-
-  ngOnInit(): void {
-      //this.refresh();
-  }
-
-  refresh(): void {
-    this.userService.getUser(this.user.id).subscribe(json =>this.user = json);
-  }
-
+  
+  constructor() {}
 }

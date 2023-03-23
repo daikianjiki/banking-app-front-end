@@ -1,3 +1,10 @@
-<p>user-form works!</p>
-<app-read-user [user] = 'user'></app-read-user>
-<button (click) = 'refresh()'>Refresh</button>
+<div>
+    <p>read-user works!</p>
+    <p>Username: {{user.username}}</p>
+    <p>Password: {{user.password}}</p>
+    <p>First Name: {{user.firstName}}</p>
+    <p>Last Name: {{user.lastName}}</p>
+    <p>Address: {{user.streetAddress1}}</p>
+    <p>Phone Number: {{user.phoneNumber}}</p>
+    <p>Email: {{user.email}}</p>
+</div>

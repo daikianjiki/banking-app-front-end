@@ -1,4 +1,5 @@
 <p>create-user works!</p>
+<app-user-form  [user] = 'newUser'></app-user-form>
 <form>
     Username: <br>
     <input type="text" [(ngModel)]='user.username' [ngModelOptions]="{standalone: true}">
