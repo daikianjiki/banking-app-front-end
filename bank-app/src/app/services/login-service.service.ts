@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from '../model/user';
+import { NavbarService } from './navbar.service';
 import { UserService } from './user.service';
 
 @Injectable({
@@ -12,7 +13,10 @@ export class LoginServiceService {
 
   user: User = {};
 
-  constructor(private httpClient : HttpClient, private userService : UserService, private routerService : Router) {            
+  constructor(private httpClient : HttpClient, 
+              private userService : UserService, 
+              private routerService : Router,
+              private navbarService : NavbarService) {            
   }
 
   setUser(user: User){
@@ -55,6 +59,7 @@ export class LoginServiceService {
   logout() : void {
     this.userService.loggedIn = false;
     this.routerService.navigate(["/home"]);
+    this.navbarService.setSelected("home");
   }
 
   doLogin(username : string, password : string) : User {

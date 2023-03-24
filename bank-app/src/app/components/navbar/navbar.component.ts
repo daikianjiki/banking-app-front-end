@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginServiceService } from 'src/app/services/login-service.service';
+import { NavbarService } from 'src/app/services/navbar.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -12,11 +13,12 @@ export class NavbarComponent implements OnInit {
   selected: String = "";
   isLoggedIn: boolean = this.userService.loggedIn;
 
-  constructor(public userService : UserService, public loginService: LoginServiceService) { }
+  constructor(public userService : UserService, public loginService: LoginServiceService, public navbarService : NavbarService) { }
   
-  setSelected(arg0: string) {
-    this.selected = arg0;
+  setSelected(newSelection: string) {
+    this.navbarService.setSelected(newSelection);
   }
+  
   ngOnInit(): void {
     this.selected = "home"
   }
