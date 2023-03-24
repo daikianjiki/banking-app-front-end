@@ -7,6 +7,13 @@ import { User } from '../model/user';
   providedIn: 'root'
 })
 export class UserService {
+  user?: User;
+  loggedIn : boolean = false;
+
+  setAccount(user: User) {
+    this.user = user;
+    this.loggedIn = true;
+  }
 
   constructor(private httpClient: HttpClient) { }
 

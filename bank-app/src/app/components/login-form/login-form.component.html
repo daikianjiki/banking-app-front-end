@@ -2,11 +2,11 @@
 <form id="login-form" class="px-4">
     <div class="row">
         <label class="col-12" for="username">Username:</label>
-        <input class="col-8" id="username" type="text"> 
+        <input [(ngModel)]='username' [ngModelOptions]="{standalone: true}" class="col-8" id="username" type="text"> 
     </div>
     <div class="row">
         <label class="col-12" for="password">Password:</label>
-        <input class="col-8" id="password" type="password">
+        <input [(ngModel)]='password' [ngModelOptions]="{standalone: true}" class="col-8" id="password" type="password">
     </div>
 
     <div>
