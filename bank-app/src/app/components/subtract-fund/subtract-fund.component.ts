@@ -10,7 +10,7 @@ export class SubtractFundComponent implements OnInit {
   inputAmount: Number = 0;
   buttonClickMessage = "";
 
-  withdrawAmount() {
+  thanksMessage() {
     this.buttonClickMessage = "Thanks for your withdrawl!"
   }
 
