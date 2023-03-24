@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { User } from 'src/app/model/user';
+import { LoginServiceService } from 'src/app/services/login-service.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -30,6 +31,7 @@ export class CreateUserComponent {
   
   constructor(private userService : UserService) {}
 
+  
   createUser() : void {
     this.userService.postUser(this.user).subscribe(json => {
       this.user =json; 
@@ -43,6 +45,7 @@ export class CreateUserComponent {
   ngOnInit() :void {
     if (this.userService.loggedIn && this.userService.user != undefined) {
       this.newUser = this.userService.user;
+      this.show2 = false;
     }
   }
 }
