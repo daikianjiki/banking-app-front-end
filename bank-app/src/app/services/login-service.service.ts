@@ -60,7 +60,7 @@ export class LoginServiceService {
     let json;
     response.subscribe(returnedJson => {
 
-      if (returnedJson != undefined && returnedJson.id != undefined){
+      if (returnedJson != undefined && returnedJson.userId != undefined){
         // update login status
         json = returnedJson;
         this.userService.setAccount(json as User);

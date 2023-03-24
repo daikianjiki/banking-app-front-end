@@ -9,7 +9,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class CreateUserComponent {
   user : User = {
-    id: 0,
+    userId: 0,
     username: '',
     password: '',
     streetAddress1: '',
@@ -17,7 +17,7 @@ export class CreateUserComponent {
     email: ''
   }
   newUser : User = {
-    id: 0,
+    userId: 0,
     username: '',
     password: '',
     streetAddress1: '',
