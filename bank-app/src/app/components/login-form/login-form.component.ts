@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/model/user';
 import { LoginServiceService } from 'src/app/services/login-service.service';
+import { NavbarService } from 'src/app/services/navbar.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -12,7 +13,11 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class LoginFormComponent {
 
-  constructor(private loginService : LoginServiceService, private userService : UserService, private routerServeice : Router) {
+  constructor(
+    private loginService : LoginServiceService, 
+    private userService : UserService, 
+    private routerServeice : Router,
+    private navbarService : NavbarService) {
   }
 
   username: string = "";
@@ -37,6 +42,7 @@ export class LoginFormComponent {
         this.userService.user = json;
         this.userService.loggedIn = true;
         this.routerServeice.navigate(["/user"]);
+        this.navbarService.setSelected("user");
       }
     });
   }

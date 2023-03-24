@@ -3,15 +3,20 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from '../model/user';
+import { NavbarService } from './navbar.service';
 import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginServiceService {
+
   user: User = {};
 
-  constructor(private httpClient : HttpClient, private userService : UserService, private routerService : Router) {            
+  constructor(private httpClient : HttpClient, 
+              private userService : UserService, 
+              private routerService : Router,
+              private navbarService : NavbarService) {            
   }
 
   setUser(user: User){
@@ -51,6 +56,12 @@ export class LoginServiceService {
     return response;
   }
 
+  logout() : void {
+    this.userService.loggedIn = false;
+    this.routerService.navigate(["/home"]);
+    this.navbarService.setSelected("home");
+  }
+
   doLogin(username : string, password : string) : User {
     this.setUsername(username);
     this.setPassword(password);
@@ -74,4 +85,5 @@ export class LoginServiceService {
     // redundant cast but clarifies what is happening
     return json as User;
   }
+
 }
