@@ -46,14 +46,21 @@
                 User
             </a>
           </li>
-          <li class="nav-item">
-            <a 
+          <li [ngSwitch]="userService.loggedIn" class="nav-item">
+            <a *ngSwitchCase="false" 
                 class="nav-link" 
                 [class.active]="selected == 'login'"
                 [attr.aria-current]="selected == 'login'"
                 (click)="setSelected('login')"
                 routerLink = "login">
-                Login/Logout
+                Login
+            </a>
+            <a *ngSwitchCase="true" 
+                class="nav-link" 
+                [class.active]="selected == 'login'"
+                [attr.aria-current]="selected == 'login'"
+                (click)="setSelected('login'); loginService.logout()">
+                Logout
             </a>
           </li>
         </ul>

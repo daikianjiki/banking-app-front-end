@@ -9,6 +9,7 @@ import { UserService } from './user.service';
   providedIn: 'root'
 })
 export class LoginServiceService {
+
   user: User = {};
 
   constructor(private httpClient : HttpClient, private userService : UserService, private routerService : Router) {            
@@ -51,6 +52,11 @@ export class LoginServiceService {
     return response;
   }
 
+  logout() : void {
+    this.userService.loggedIn = false;
+    this.routerService.navigate(["/home"]);
+  }
+
   doLogin(username : string, password : string) : User {
     this.setUsername(username);
     this.setPassword(password);
@@ -74,4 +80,5 @@ export class LoginServiceService {
     // redundant cast but clarifies what is happening
     return json as User;
   }
+
 }
