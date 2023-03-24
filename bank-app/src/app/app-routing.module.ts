@@ -22,13 +22,14 @@ import { CreateAccountComponent } from './components/create-account/create-accou
 import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
 // import { UpdateAccountComponent } from './componenets/update-account/update-account.component';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
+import { AuthGuardGuard } from './guards/auth-guard.guard';
 // import { AppRoutingModule } from './app-routing.module';
 
 const routes: Routes = [
     {path: 'home', component: FrontComponent},
-    {path: 'account', component: AccountComponent},
-    {path: 'transaction', component: TransactionComponent},
-    {path: 'user', component: UserComponent},
+    {path: 'account', component: AccountComponent, canActivate: [AuthGuardGuard]},
+    {path: 'transaction', component: TransactionComponent, canActivate: [AuthGuardGuard]},
+    {path: 'user', component: UserComponent, canActivate: [AuthGuardGuard]},
     {path: 'login', component: LoginComponent},
     {path: '**', component: FrontComponent},
 ];
