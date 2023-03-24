@@ -39,4 +39,10 @@ export class CreateUserComponent {
       this.show = true;
       this.show2 = false;
   }
+
+  ngOnInit() :void {
+    if (this.userService.loggedIn && this.userService.user != undefined) {
+      this.newUser = this.userService.user;
+    }
+  }
 }
