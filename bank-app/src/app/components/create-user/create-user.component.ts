@@ -36,4 +36,10 @@ export class CreateUserComponent {
       console.log(this.newUser)});
       this.show = true;
   }
+
+  ngOnInit() :void {
+    if (this.userService.loggedIn && this.userService.user != undefined) {
+      this.newUser = this.userService.user;
+    }
+  }
 }
