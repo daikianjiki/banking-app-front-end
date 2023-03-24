@@ -1,5 +1,5 @@
 export interface User {
-    id: number,
+    userId: number,
     username: string, //user will use this to log in.
     password: string, //user will use this to log in.
     streetAddress1: string, //user's address - won't need it for anything else

@@ -2,6 +2,9 @@
 <div>
     <app-user-form [user] = 'newUser'></app-user-form>
 </div>
+<div>
+    <app-update-user [user] = 'newUser'></app-update-user>
+</div>
 <ngb-alert *ngIf="show">{{ message }}</ngb-alert>
 <form class="col-sm-4" *ngIf="show2">
     <h2>User Registeration</h2> <br>

@@ -11,7 +11,7 @@ export class UserFormComponent {
 
   @Input()
   user : User = {
-    id: 0,
+    userId: 0,
     username: '',
     password: '',
     streetAddress1: '',

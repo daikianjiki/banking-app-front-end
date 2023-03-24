@@ -11,7 +11,7 @@ export class UpdateUserComponent {
 
   @Input()  
   user : User = {
-    id: 0,
+    userId: 0,
     username: '',
     password: '',
     streetAddress1: '',
@@ -24,7 +24,7 @@ export class UpdateUserComponent {
   constructor(private userService : UserService) {}
 
   saveChanges() : void {
-    this.userService.patchUser(this.user, this.user.id).subscribe(json => {
+    this.userService.patchUser(this.user, this.user.userId).subscribe(json => {
       this.user = json;
       console.log("updated user: " +this.user)});
       this.openUpdate();
