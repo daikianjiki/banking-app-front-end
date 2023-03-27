@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ReadUserComponent } from './read-user.component';
+import { AccountFormComponent } from './account-form.component';
 
-describe('ReadUserComponent', () => {
-  let component: ReadUserComponent;
-  let fixture: ComponentFixture<ReadUserComponent>;
+describe('AccountFormComponent', () => {
+  let component: AccountFormComponent;
+  let fixture: ComponentFixture<AccountFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ReadUserComponent ]
+      declarations: [ AccountFormComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ReadUserComponent);
+    fixture = TestBed.createComponent(AccountFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
