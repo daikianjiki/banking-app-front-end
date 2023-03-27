@@ -9,7 +9,6 @@ import { AccountService } from 'src/app/services/account.service';
 })
 export class CreateAccountComponent {
 
-  accounts : Account[] = [];
   account: Account = {
     accountId: 0,
     accountType: '',
@@ -21,7 +20,7 @@ export class CreateAccountComponent {
   }
 
   createAccount() : void {
-    this.accountService.postAccount(this.account).subscribe(json => {this.account = json; console.log(this.account)})
+    this.accountService.postAccount(this.account).subscribe(json => {this.accountService.accounts.push(json); console.log(this.account)})
   }
 
 }

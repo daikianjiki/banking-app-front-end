@@ -9,11 +9,12 @@
         <input class="form-check-input" value ="Savings" type="radio" [(ngModel)] = 'account.accountType'>
         <label class="form-check-output" for ="Savings">Savings</label>
     </div>
-    <button (click) = 'createAccount()'>Create Account</button>
+    <br>
+    <button class="btn btn-success" (click) = 'createAccount()'>Create Account</button>
     <br>
     <hr>
     <br>
-    <div *ngFor="let account of accounts">
-        <app-account-form [account] = 'account'></app-account-form>
+    <div>
+        <app-account-form></app-account-form>
     </div>
 </div>

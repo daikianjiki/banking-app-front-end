@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Account } from 'src/app/model/account';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
   selector: 'app-account-form',
@@ -8,11 +9,14 @@ import { Account } from 'src/app/model/account';
 })
 export class AccountFormComponent {
 
-  @Input()
-  account: Account = {
-    accountId: 0,
-    accountType: '',
-    balance: 0
-  }
+  accounts : Account[] = [];
+
+  constructor(public accountService : AccountService) { }
+  // ngOnInit(): void {
+  //   this.refresh();
+  // }
+  // refresh() {
+  //   this.accountService.getAllAccounts().subscribe(json=> {this.accounts = json})
+  // }
 
 }
