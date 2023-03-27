@@ -34,14 +34,24 @@ export class AddFundComponent {
   postDeposit(): void {
 
     const currentDate = new Date();
-    this.transaction.timestamp = currentDate.getTime();
+    let transaction : Transaction  = {
+      transactionId: 0,
+      timestamp: 0,
+      description: '',
+      transactionType: '',
+      amount: this.transaction.amount,
+      balance: 0
+    }
 
-    this.transaction.description = "Deposited Amount: " + this.transaction.amount;
-    this.transaction.transactionType = "Deposit"
+    transaction.timestamp = currentDate.getTime();
 
-    this.transactionService.postTransactionsAPI(this.transaction).subscribe(json => {this.transaction = json;
+    transaction.description = "Deposited Amount: " + this.transaction.amount;
+    transaction.transactionType = "Deposit"
 
-      console.log(this.transaction)});
+    this.transactionService.postTransactionsAPI(transaction).subscribe(json => {
+      this.transaction = json;
+      console.log(this.transaction)
+    });
 
   }
 
