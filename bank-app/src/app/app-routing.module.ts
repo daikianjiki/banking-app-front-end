@@ -19,8 +19,6 @@ import { BankLogoComponent } from './components/bank-logo/bank-logo.component';
 import { AdvertisementComponent } from './components/advertisement/advertisement.component';
 import { SlideShowComponent } from './components/slide-show/slide-show.component';
 import { CreateAccountComponent } from './components/create-account/create-account.component';
-import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
-// import { UpdateAccountComponent } from './componenets/update-account/update-account.component';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
 import { AuthGuardGuard } from './guards/auth-guard.guard';
 // import { AppRoutingModule } from './app-routing.module';

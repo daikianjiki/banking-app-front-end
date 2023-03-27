@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Account } from 'src/app/model/account';
 import { AccountService } from 'src/app/services/account.service';
 
@@ -7,16 +7,15 @@ import { AccountService } from 'src/app/services/account.service';
   templateUrl: './account-form.component.html',
   styleUrls: ['./account-form.component.css']
 })
-export class AccountFormComponent {
+export class AccountFormComponent implements OnInit{
 
   accounts : Account[] = [];
 
   constructor(public accountService : AccountService) { }
-  // ngOnInit(): void {
-  //   this.refresh();
-  // }
-  // refresh() {
-  //   this.accountService.getAllAccounts().subscribe(json=> {this.accounts = json})
-  // }
-
+  ngOnInit(): void {
+    this.refresh();
+  }
+  refresh() {
+    this.accountService.getAllAccounts().subscribe(json=> {this.accounts = json})
+  }
 }
