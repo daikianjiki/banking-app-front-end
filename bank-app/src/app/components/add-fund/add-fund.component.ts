@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Transaction } from 'src/app/model/transaction';
 import { TransactionService } from 'src/app/services/transaction.service';
@@ -9,6 +9,7 @@ import { TransactionService } from 'src/app/services/transaction.service';
   styleUrls: ['./add-fund.component.css']
 })
 export class AddFundComponent {
+  @Input()
   transaction : Transaction  = {
     transactionId: 0,
     timestamp: 0,

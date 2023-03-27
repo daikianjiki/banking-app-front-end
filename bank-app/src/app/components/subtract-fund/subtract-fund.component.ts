@@ -37,14 +37,24 @@ goToOtherRoute() {
 postWithdraw(): void {
 
     const currentDate = new Date();
-    this.transaction.timestamp = currentDate.getTime();
+    let transaction : Transaction  = {
+      transactionId: 0,
+      timestamp: 0,
+      description: '',
+      transactionType: '',
+      amount: this.transaction.amount,
+      balance: 0
+    }
 
-    this.transaction.description = "Withdrawal Amount: " + this.transaction.amount;
-    this.transaction.transactionType = "Withdraw"
+    transaction.timestamp = currentDate.getTime();
 
-    this.transactionService.postTransactionsAPI(this.transaction).subscribe(json => {this.transaction = json;
+    transaction.description = "Withdrawal Amount: " + this.transaction.amount;
+    transaction.transactionType = "Withdraw"
 
-      console.log(this.transaction)});
+    this.transactionService.postTransactionsAPI(transaction).subscribe(json => {
+      this.transaction = json;
+      console.log(this.transaction)
+    });
 
   }
 
