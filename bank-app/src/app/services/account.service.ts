@@ -16,6 +16,6 @@ export class AccountService {
     let header: HttpHeaders = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*");
-    return this.httpClient.post<Account>(`localhost:9000`, account, {headers:header});
+    return this.httpClient.post<Account>(`http://127.0.0.1:9000/account`, account, {headers:header});
   }
 }

@@ -1,1 +1,19 @@
-<p>create-account works!</p>
+<div id="create-account">
+    <p>Create a new account:</p>
+    <br>
+    <div class="form-check">
+        <input class="form-check-input" value ="Checking" type="radio" [(ngModel)] = 'account.accountType'>
+        <label class="form-check-output" for ="Checking">Checking</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" value ="Savings" type="radio" [(ngModel)] = 'account.accountType'>
+        <label class="form-check-output" for ="Savings">Savings</label>
+    </div>
+    <button (click) = 'createAccount()'>Create Account</button>
+    <br>
+    <hr>
+    <br>
+    <div *ngFor="let account of accounts">
+        <app-account-form [account] = 'account'></app-account-form>
+    </div>
+</div>

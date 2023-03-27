@@ -27,8 +27,8 @@ import { UpdateUserComponent } from './components/update-user/update-user.compon
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ReadUserComponent } from './components/read-user/read-user.component';
 import { FooterComponent } from './footer/footer.component';
+import { AccountFormComponent } from './components/account-form/account-form.component';
 
 @NgModule({
   declarations: [
@@ -54,8 +54,8 @@ import { FooterComponent } from './footer/footer.component';
     DeleteAccountComponent,
     // UpdateAccountComponent,
     UpdateUserComponent,
-    ReadUserComponent,
-    FooterComponent
+    FooterComponent,
+    AccountFormComponent
   ],
 
   imports: [
