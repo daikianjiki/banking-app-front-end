@@ -1,1 +1,9 @@
-<p>transaction-display works!</p>
+<div *ngFor = "let transaction of allTransaction">
+    <p>Transaction # {{transaction.transactionId}}</p>
+    <br>
+    <p>$ {{transaction.amount}}</p>
+    <br>
+    <p>{{transaction.transactionType}}</p>
+    <br>
+    
+</div>

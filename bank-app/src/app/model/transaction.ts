@@ -1,5 +1,5 @@
 export interface Transaction {
-    id: number,
+    transactionId: number,
     timestamp: number, //date of the transaction i.e 'March 20, 2023' -- is there Data datatype?
     description: string, //description of the transaction i.e 'Transfer to Savings Account'
     transactionType: string, //type of the transaction i.e withdrawal, deposit etc.

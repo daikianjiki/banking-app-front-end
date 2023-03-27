@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Transaction } from 'src/app/model/transaction';
 import { TransactionService } from 'src/app/services/transaction.service';
 
@@ -8,11 +9,8 @@ import { TransactionService } from 'src/app/services/transaction.service';
   styleUrls: ['./add-fund.component.css']
 })
 export class AddFundComponent {
-
-
-
   transaction : Transaction  = {
-    id: 0,
+    transactionId: 0,
     timestamp: 0,
     description: '',
     transactionType: '',
@@ -20,16 +18,18 @@ export class AddFundComponent {
     balance: 0
   }
 
-  inputAmount: Number = 0;
+  //inputAmount: Number = 0;
   buttonClickMessage = "";
 
   thanksMessage() {
     this.buttonClickMessage = "Thanks for your deposit!";
   }
 
+  constructor(private transactionService : TransactionService, private router : Router) { }
 
-
-  constructor(private transactionService : TransactionService) { }
+  // goToOtherRoute() {
+  //   this.router.navigate(['/account'])
+  // }
 
   postDeposit(): void {
 
@@ -43,7 +43,6 @@ export class AddFundComponent {
 
       console.log(this.transaction)});
 
-    // this.inputAmount = this.transaction.amount;
   }
 
 }
