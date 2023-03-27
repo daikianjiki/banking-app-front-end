@@ -2,8 +2,8 @@
     <div>
         <label class="col-12">Input Amount:</label>
         <input  type = "number" min="0" value="" [(ngModel)]="transaction.amount">
-        <!-- <p style="margin-left: 25px;">$ {{inputAmount}} </p> -->
-        <button class="btn btn-primary" (click) ="thanksMessage()" (click) ="postDeposit()">Deposit
+        <p style="margin-left: 25px;"></p>
+        <button class="btn btn-primary" (click) ="thanksMessage()" (click)="postDeposit()">Deposit
         </button>
         <p>{{buttonClickMessage}}</p>
     </div>
