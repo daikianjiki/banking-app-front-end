@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Transaction } from 'src/app/model/transaction';
 import { TransactionService } from 'src/app/services/transaction.service';
 
@@ -8,11 +9,9 @@ import { TransactionService } from 'src/app/services/transaction.service';
   styleUrls: ['./add-fund.component.css']
 })
 export class AddFundComponent {
-
-
-
+  @Input()
   transaction : Transaction  = {
-    id: 0,
+    transactionId: 0,
     timestamp: 0,
     description: '',
     transactionType: '',
@@ -20,30 +19,41 @@ export class AddFundComponent {
     balance: 0
   }
 
-  inputAmount: Number = 0;
+  //inputAmount: Number = 0;
   buttonClickMessage = "";
 
   thanksMessage() {
     this.buttonClickMessage = "Thanks for your deposit!";
   }
 
+  constructor(private transactionService : TransactionService, private router : Router) { }
 
-
-  constructor(private transactionService : TransactionService) { }
+  // goToOtherRoute() {
+  //   this.router.navigate(['/account'])
+  // }
 
   postDeposit(): void {
 
     const currentDate = new Date();
-    this.transaction.timestamp = currentDate.getTime();
+    let transaction : Transaction  = {
+      transactionId: 0,
+      timestamp: 0,
+      description: '',
+      transactionType: '',
+      amount: this.transaction.amount,
+      balance: 0
+    }
 
-    this.transaction.description = "Deposited Amount: " + this.transaction.amount;
-    this.transaction.transactionType = "Deposit"
+    transaction.timestamp = currentDate.getTime();
 
-    this.transactionService.postTransactionsAPI(this.transaction).subscribe(json => {this.transaction = json;
+    transaction.description = "Deposited Amount: " + this.transaction.amount;
+    transaction.transactionType = "Deposit"
 
-      console.log(this.transaction)});
+    this.transactionService.postTransactionsAPI(transaction).subscribe(json => {
+      this.transaction = json;
+      console.log(this.transaction)
+    });
 
-    // this.inputAmount = this.transaction.amount;
   }
 
 }
