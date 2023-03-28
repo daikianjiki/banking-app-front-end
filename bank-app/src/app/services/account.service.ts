@@ -3,18 +3,20 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Account } from '../model/account';
 import { User } from '../model/user';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private userService : UserService) { }
 
   accounts : Account[] = [];
 
   //create account
   postAccount(account:Account) : Observable<Account> {
+    account.user = this.userService.user;
     let header: HttpHeaders = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*");
@@ -27,4 +29,21 @@ export class AccountService {
     header.append("Access-Control-Allow-Origin", "*");
     return this.httpClient.get<Account[]>(`http://127.0.0.1:9000/account`, { headers: header });
   }
+
+  getAccountForUser(user : User) : Observable<Account[]> {
+
+    if(user.userId == null || user.userId == undefined) {
+      throw new Error("getAccountForUser(): missing user ID");
+    }
+
+    let header: HttpHeaders = new HttpHeaders();
+    header.append("accept", "text/json");
+    header.append("Access-Control-Allow-Origin", "*");
+    return this.httpClient.get<Account[]>(`http://127.0.0.1:9000/account/user/${user.userId}`, { headers: header });
+  }
+
+  emptyAccountsArray(): void {
+    this.accounts = [];
+  }
+
 }

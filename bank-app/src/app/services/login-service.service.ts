@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from '../model/user';
+import { AccountService } from './account.service';
 import { NavbarService } from './navbar.service';
 import { UserService } from './user.service';
 
@@ -16,7 +17,8 @@ export class LoginServiceService {
   constructor(private httpClient : HttpClient, 
               private userService : UserService, 
               private routerService : Router,
-              private navbarService : NavbarService) {            
+              private navbarService : NavbarService,
+              private accountService : AccountService) {            
   }
 
   setUser(user: User){
@@ -35,16 +37,16 @@ export class LoginServiceService {
     this.user.email = email;
   }
 
-  verifyCredentials() : boolean {
-    if (this.user.username == undefined) return false;
-    if (this.user.password == undefined) return false;
+  verifyCredentials(user: User) : boolean {
+    if (user.username == undefined) return false;
+    if (user.password == undefined) return false;
     //if (this.user.email == undefined) return false;
 
     return true;
   }
 
-  postLoginRequest() : Observable<User> {
-    if (this.verifyCredentials() == false){
+  postLoginRequest(user : User) : Observable<User> {
+    if (this.verifyCredentials(user) == false){
       throw new Error("Invalid credentials");
     }
 
@@ -52,7 +54,7 @@ export class LoginServiceService {
     headers.append("accept", "text/json");
     headers.append("Access-Control-Allow-Origin", "*");
 
-    let response = this.httpClient.post<User>(`http://127.0.0.1:9000/login`, this.user, {headers:headers});
+    let response = this.httpClient.post<User>(`http://127.0.0.1:9000/login`, user, {headers:headers});
     return response;
   }
 
@@ -60,30 +62,37 @@ export class LoginServiceService {
     this.userService.loggedIn = false;
     this.routerService.navigate(["/home"]);
     this.navbarService.setSelected("home");
+    this.accountService.emptyAccountsArray();
   }
 
-  doLogin(username : string, password : string) : User {
-    this.setUsername(username);
-    this.setPassword(password);
+  login(user : User, callback? : (loginService?:LoginServiceService)=>{}) : void {
+    
+    //create a function where if username and password matches the username and password stored, access log in.
+    //and when a user click this button, and if it's granted, lead the user to the account page.
+    //let user : User = {username : this.username, password: this.password};
 
-    let response = this.postLoginRequest();
+    console.log(user);
+    let loginResponse : Observable<User> = this.postLoginRequest(user);
 
-    let json;
-    response.subscribe(returnedJson => {
+    loginResponse.subscribe(json => {
+      if (json.username == null){ 
+        console.log(json);
+        throw new Error("login(): Invalid credentials");
+      } else {
+        this.setUser(user);
+        this.userService.user = json;
+        this.userService.loggedIn = true;
 
-      if (returnedJson != undefined && returnedJson.userId != undefined){
-        // update login status
-        json = returnedJson;
-        this.userService.setAccount(json as User);
+        this.accountService.getAccountForUser(this.userService.user).subscribe(json => {
+          this.accountService.accounts = json;
+        })
+
         this.routerService.navigate(["/user"]);
+        this.navbarService.setSelected("user");
+
+        // run callback function if provided
+        if (callback != undefined) callback(this);
       }
     });
-
-    if (json == undefined){
-      throw new Error("Login failed!");
-    }
-    // redundant cast but clarifies what is happening
-    return json as User;
   }
-
 }

@@ -1,7 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Transaction } from 'src/app/model/transaction';
+import { AccountService } from 'src/app/services/account.service';
 import { TransactionService } from 'src/app/services/transaction.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-subtract-fund',
@@ -26,7 +28,12 @@ export class SubtractFundComponent {
     this.buttonClickMessage = "Thanks for your withdrawal!"
   }
 
-constructor(private transactionService : TransactionService, private router : Router) { }
+constructor(
+      private transactionService : TransactionService,
+      private router : Router,
+      private userService : UserService,
+      private accountService : AccountService
+   ) { }
 
 /**
 goToOtherRoute() {
@@ -50,12 +57,9 @@ postWithdraw(): void {
 
     transaction.description = "Withdrawal Amount: " + this.transaction.amount;
     transaction.transactionType = "Withdraw"
+    transaction.moneyAccount = {accountId: this.accountService.accounts[0].accountId};
 
-    this.transactionService.postTransactionsAPI(transaction).subscribe(json => {
-      this.transaction = json;
-      console.log(this.transaction)
-    });
-
+    this.transactionService.withdraw(transaction);
   }
 
 }
