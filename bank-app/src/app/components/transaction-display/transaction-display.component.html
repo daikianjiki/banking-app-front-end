@@ -1,4 +1,4 @@
-<div *ngFor = "let transaction of allTransaction">
+<div *ngFor = "let transaction of this.transactionService.transactions">
     <p>Transaction # {{transaction.transactionId}}</p>
     <br>
     <p>$ {{transaction.amount}}</p>

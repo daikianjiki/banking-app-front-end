@@ -97,26 +97,31 @@ export class TransactionService {
       // return the new balance transaction
     }
 
-    withdraw(transaction: Transaction) : Transaction {
+    public withdraw(transaction: Transaction) : Transaction {
 
       this.postWithdraw(transaction).subscribe(json => {
         transaction = json;
+        this.transactions.unshift(transaction);
 
         this.accountService.getAccountForUser(this.userService.user!).subscribe(json => {
           this.accountService.accounts = json;
           console.log(json);
         });
-
         console.log(transaction)
-      });
 
       // Here we check if the backend has place the new balance into this transaction.
       // (Major error if it hasn't - problem with backend)
       if (transaction.settledBalance == undefined){
-        throw new Error("deposit(): transaction failed - settled balance is undefined");
+        throw new Error("withdrawal(): transaction failed - settled balance is undefined");
       }
 
+    });
+
       return transaction;
+    }
+
+    emptyTransactionArray(): void{
+      this.transactions = [];
     }
 
 
