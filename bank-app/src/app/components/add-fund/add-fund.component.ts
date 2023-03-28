@@ -10,6 +10,7 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './add-fund.component.html',
   styleUrls: ['./add-fund.component.css']
 })
+
 export class AddFundComponent {
   @Input()
   transaction : Transaction  = {
@@ -28,7 +29,12 @@ export class AddFundComponent {
     this.buttonClickMessage = "Thanks for your deposit!";
   }
 
-  constructor(private userService : UserService, private accountService : AccountService, private transactionService : TransactionService, private router : Router) { }
+  constructor(
+    private userService : UserService, 
+    private accountService : AccountService, 
+    public transactionService : TransactionService, 
+    private router : Router
+    ) { }
 
   // goToOtherRoute() {
   //   this.router.navigate(['/account'])

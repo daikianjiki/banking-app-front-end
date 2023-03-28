@@ -17,6 +17,8 @@ export class TransactionService {
     private accountService : AccountService,
     private userService : UserService
     ) { }
+    
+    transactions : Transaction[] = [];
 
     //get all transaction on a list to see it on display for each account
     getTransactionsAPI() : Observable<Transaction[]> {
@@ -68,10 +70,10 @@ export class TransactionService {
      */
     public deposit(transaction: Transaction) : void {
 
-
       // use the private postDeposit method to handle all the dirty work
       this.postDeposit(transaction).subscribe(json => {
         transaction = json;
+        this.transactions.unshift(transaction);
 
         // this is used to sync the account service
         // TODO: hide these details in the AccountService class
