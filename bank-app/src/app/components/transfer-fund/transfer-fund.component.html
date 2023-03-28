@@ -1,1 +1,25 @@
+<p>Transfer From:</p>
+
+<!-- User needs to define which account to transfer from and display the value:
+    User needs to define which account to transfer to and display the value: -->
+
+<div class="col" *ngFor="let account of this.accountService.accounts">
+    <div class="form-check">
+        <input class="form-check-input" name="from" type="radio" [value]="account.accountId">
+        <label class="form-check-output">Account # {{account.accountId}} - {{account.accountType}} Account : ${{account.balance}}</label>
+    </div>
+</div>
+<hr>
+<p>Transfer To:</p>
+<div class="col" *ngFor="let account of this.accountService.accounts">
+    <div class="form-check">
+        <input class="form-check-input" name="to" type="radio" [value]="account.accountId">
+        <label class="form-check-output">Account # {{account.accountId}} - {{account.accountType}} Account : ${{account.balance}}</label>
+    </div>
+</div>
+<hr>
+<input class="form-control" type="number" [(ngModel)]="amount">
+<br>
+<button class="btn btn-warning" (click) = 'transfer()'>Transfer</button>
+
 
