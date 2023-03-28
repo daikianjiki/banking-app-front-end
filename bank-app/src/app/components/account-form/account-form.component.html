@@ -1,9 +1,9 @@
 <h3>Active Accounts:</h3>
 <br>
 <div class="col-sm-4" *ngFor="let account of this.accountService.accounts">
+
     <p>Account Id: {{account.accountId}}</p>
     <p>Account Type: {{account.accountType}}</p>
     <p>Account Balance: ${{account.balance}}</p>
 </div>
-<br>
 
