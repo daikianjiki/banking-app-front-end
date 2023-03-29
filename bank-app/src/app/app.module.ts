@@ -27,6 +27,7 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './footer/footer.component';
 import { AccountFormComponent } from './components/account-form/account-form.component';
+import { AccountSummaryComponent } from './components/account-summary/account-summary.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { AccountFormComponent } from './components/account-form/account-form.com
     CreateAccountComponent,
     UpdateUserComponent,
     FooterComponent,
-    AccountFormComponent
+    AccountFormComponent,
+    AccountSummaryComponent
   ],
 
   imports: [
