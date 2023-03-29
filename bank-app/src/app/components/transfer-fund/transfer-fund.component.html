@@ -5,7 +5,7 @@
 
 <div class="col" *ngFor="let account of this.accountService.accounts">
     <div class="form-check">
-        <input class="form-check-input" name="from" type="radio" [value]="account.accountId">
+        <input class="form-check-input" name="from" type="radio" [id]="from">
         <label class="form-check-output">Account # {{account.accountId}} - {{account.accountType}} Account : ${{account.balance}}</label>
     </div>
 </div>
@@ -13,13 +13,13 @@
 <p>Transfer To:</p>
 <div class="col" *ngFor="let account of this.accountService.accounts">
     <div class="form-check">
-        <input class="form-check-input" name="to" type="radio" [value]="account.accountId">
+        <input class="form-check-input" name="to" type="radio" [id]="to">
         <label class="form-check-output">Account # {{account.accountId}} - {{account.accountType}} Account : ${{account.balance}}</label>
     </div>
 </div>
 <hr>
-<input class="form-control" type="number" [(ngModel)]="amount">
+<input class="form-control" type="number" [(ngModel)]="transaction.amount">
 <br>
-<button class="btn btn-warning" (click) = 'transfer()'>Transfer</button>
+<button class="btn btn-warning" (click) = 'transfer()' (click)="test()">Transfer</button>
 
 
