@@ -1,9 +1,34 @@
+<!-- 
+    This is the front page.
+    
+    It contains 3 main components when the user is not logged in
+        Login:             app-login-form 
+        Slide-Show:        app-slide-show
+        Advertisement:     app-advertisement
+    
+    It shows the account summary component when the user is logged in
+-->
 
-<div id="front-page-top" class="row w-100">
-    <app-login-form [showHeader]="true" id="front-page-login" class="col-md-3"></app-login-form>
-    <app-slide-show id="front-page-slide-show" class="col-md-9"></app-slide-show>
-</div>
-<div id="front-page-advertisement">
-    <app-advertisement></app-advertisement>
-</div>
+<main [ngSwitch]="this.userService.loggedIn">
+    <div  *ngSwitchCase="false" id="front-page-top" class="row w-100">
+        <app-login-form 
+            [showHeader]="true" 
+            id="front-page-login" 
+            class="col-md-3">
+        </app-login-form>
+        <app-slide-show 
+            id="front-page-slide-show"
+            class="col-md-9">
+        </app-slide-show>
+
+        <div id="front-page-advertisement">
+            <app-advertisement></app-advertisement>
+        </div>
+
+    </div>
+    <app-account-summary *ngSwitchCase="true"></app-account-summary>
+
+</main>
+
+
 

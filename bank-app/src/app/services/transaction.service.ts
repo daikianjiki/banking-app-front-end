@@ -72,7 +72,14 @@ export class TransactionService {
 
       // use the private postDeposit method to handle all the dirty work
       this.postDeposit(transaction).subscribe(json => {
+        let account: Account | undefined = transaction.moneyAccount;
+
         transaction = json;
+        
+        if (account != undefined){
+          transaction.moneyAccount = account;
+        }
+
         this.transactions.unshift(transaction);
 
         // this is used to sync the account service
