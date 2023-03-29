@@ -1,0 +1,59 @@
+<main>
+    <h2>WELCOME, {{this.user.username | uppercase}}</h2>
+    <section id="account-summary-balance">
+        <p>
+            <span>Balance: </span>
+            <span id="account-balance-text">
+                {{this.balance | currency}}
+            </span>
+        </p>
+    </section>
+    <div id="account-details-content" class="row">
+        <section id="open-accounts" class="col-md-6">
+            <h2>
+                Open Accounts
+            </h2>
+            <table class="table table-striped table-dark">
+                <thead>
+                  <tr class="account-table-header">
+                    <th scope="col">#</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Balance</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let account of this.accounts; let i = index">
+                    <th scope="row">{{i}}</th>
+                    <td class="account-id">{{account.accountId}}</td>
+                    <td class="account-type">{{account.accountType}}</td>
+                    <td class="account-balance">{{account.balance | currency}}</td>
+                  </tr>
+                </tbody>
+            </table>
+        </section>
+        <section id="last-transactions" class="col-md-6">
+            <h2>
+                Last 10 Transactions
+            </h2>
+            <table class="table table-striped table-dark">
+                <thead>
+                  <tr class="account-table-header">
+                    <th scope="col">#</th>
+                    <th scope="col">Account ID</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Remaining Balance</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let transaction of this.lastTransactions; let i = index">
+                    <th scope="row">{{i}}</th>
+                    <td class="account-id">{{transaction.moneyAccount?.accountId}}</td>
+                    <td class="account-type">{{transaction.transactionType}}</td>
+                    <td class="account-balance">{{transaction.settledBalance | currency}}</td>
+                  </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+</main>

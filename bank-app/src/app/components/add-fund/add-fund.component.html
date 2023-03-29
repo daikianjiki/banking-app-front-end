@@ -6,6 +6,13 @@
         <button class="btn btn-primary" (click) ="thanksMessage()" (click)="postDeposit()">Deposit
         </button>
         <p>{{buttonClickMessage}}</p>
-        <p>{{this.transactionService.transactions[0] == undefined ? 0.00 : this.transactionService.transactions[0].settledBalance}}</p>
+        <p id="last-deposit-text">
+            Last Deposit: {{
+                    (this.transactionService.transactions[0] == undefined 
+                        ? 0
+                        : this.transactionService.transactions[0].settledBalance
+                    ) | currency
+                }}
+        </p>
     </div>
 
