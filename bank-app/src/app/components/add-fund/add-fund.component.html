@@ -14,5 +14,11 @@
                     ) | currency
                 }}
         </p>
+
+        <p style="margin-left: 25px;">Select Account</p>
+
+        <select style="margin-left: 20px;" width="50">
+            <option *ngFor="let account of this.accountService.accounts" value="accountId">Account {{account.accountId}}</option>
+        </select>
     </div>
 

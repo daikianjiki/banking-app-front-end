@@ -12,16 +12,9 @@ import { TransactionService } from 'src/app/services/transaction.service';
 
 export class TransactionDisplayComponent implements OnInit{
   
-  allTransaction : Transaction[] = [{
-    transactionId: 1,
-    amount: 100,
-    timestamp: 1679860754718,
-    description: 'Deposited Amount: 100',
-    transactionType: 'Deposit',
-    balance: 0
-}];
+  allTransaction : Transaction[] = [];
 
-  constructor(private transactionService : TransactionService) { }
+  constructor(public transactionService : TransactionService) { }
   ngOnInit(): void {
     this.refresh();
   }
