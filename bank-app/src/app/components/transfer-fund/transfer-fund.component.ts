@@ -35,23 +35,30 @@ export class TransferFundComponent{
     deposit.timestamp = currentDate.getTime();
     deposit.description = "Deposited Amount: " + this.transaction.amount;
     deposit.transactionType = "Deposit"
-    deposit.moneyAccount = {accountId: this.accountService.accounts[1].accountId};
+    deposit.moneyAccount = {accountId: this.to.accountId};
 
     this.transactionService.deposit(deposit);
 
     withdraw.timestamp = currentDate.getTime();
     withdraw.description = "Withdrawal Amount: " + this.transaction.amount;
     withdraw.transactionType = "Withdraw"
-    withdraw.moneyAccount = {accountId: this.accountService.accounts[0].accountId};
+    withdraw.moneyAccount = {accountId: this.from.accountId};
 
     this.transactionService.withdraw(withdraw)
 
   }
 
+  setFrom(e : Account) : void {
+    this.from = e;
+  }
+  setTo(e : Account) : void {
+    this.to = e;
+  }
+
   test() {
     let elem = document.getElementsByName("to");
     let elem2 = document.getElementsByName("from");
-    console.log(elem.item);
+    console.log(elem);
     console.log(elem2);
     console.log("test");
   }
