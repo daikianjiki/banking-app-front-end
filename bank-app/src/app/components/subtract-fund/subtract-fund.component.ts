@@ -32,7 +32,7 @@ constructor(
       public transactionService : TransactionService,
       private router : Router,
       private userService : UserService,
-      private accountService : AccountService
+      public accountService : AccountService
    ) { }
 
 /**

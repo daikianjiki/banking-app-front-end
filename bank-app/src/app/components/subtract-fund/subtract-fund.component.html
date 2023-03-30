@@ -5,7 +5,11 @@
     <button class="btn btn-primary" (click) = "thanksMessage()" (click)="postWithdraw()" >Withdrawal
     </button>
     <p>{{buttonClickMessage}}</p>
-    <p>{{this.transactionService.transactions[0] == undefined ? 0.00 : this.transactionService.transactions[0].settledBalance}}</p>
+    <p>$ {{this.transactionService.transactions[0] == undefined ? 0.00 : this.transactionService.transactions[0].settledBalance}}</p>
+
+    <select style="margin-left: 20px;" width="50">
+        <option *ngFor="let account of this.accountService.accounts" value="accountId">Account {{account.accountId}}</option>
+    </select>
 </div>
 
 

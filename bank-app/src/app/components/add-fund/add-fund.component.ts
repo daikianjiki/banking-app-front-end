@@ -31,7 +31,7 @@ export class AddFundComponent {
 
   constructor(
     private userService : UserService, 
-    private accountService : AccountService, 
+    public accountService : AccountService, 
     public transactionService : TransactionService, 
     private router : Router
     ) { }
