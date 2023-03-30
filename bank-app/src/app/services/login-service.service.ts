@@ -86,9 +86,11 @@ export class LoginServiceService {
         this.userService.user = json;
         this.userService.loggedIn = true;
 
-        this.accountService.getAccountForUser(this.userService.user).subscribe(json => {
-          this.accountService.accounts = json;
+        this.accountService.getUserAccounts(this.userService.getUser, () => {
+          console.log("LoginService.login()");
         })
+
+        this.transactionService.refreshTransactionArray(this.userService.user);
 
         this.routerService.navigate(["/user"]);
         this.navbarService.setSelected("user");

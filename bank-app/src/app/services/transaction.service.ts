@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Account } from '../model/account';
 import { Transaction } from '../model/transaction';
+import { User } from '../model/user';
 import { AccountService } from './account.service';
 import { UserService } from './user.service';
 
@@ -29,6 +30,24 @@ export class TransactionService {
 
       // return this.httpClient.get<Transaction[]>(`http://127.0.0.1:9000/accounts/${id}/Transaction`, { headers: header });
     }
+
+    /**
+     * Get all transactions owned by a user.
+     * 
+     * Must provide a user object that has a userId set
+     * @param user 
+     */
+    private getTransactionsForUser(user : Pick<User, "userId">) {
+      let userId = user.userId;
+      let header: HttpHeaders = new HttpHeaders();
+
+      header.append("accept", "text/json");
+      header.append("Access-Control-Allow-Origin", "*");
+      header.append("userId", String(userId));
+
+      return this.httpClient.get<Transaction[]>(`http://127.0.0.1:9000/Transaction`, { headers: header });
+    }
+
     //post a transaction
     private postTransactionsAPI(transaction: Transaction) : Observable<Transaction> {
       let header: HttpHeaders = new HttpHeaders();
@@ -84,10 +103,10 @@ export class TransactionService {
 
         // this is used to sync the account service
         // TODO: hide these details in the AccountService class
-        this.accountService.getAccountForUser(this.userService.user!).subscribe(json => {
-          this.accountService.accounts = json;
-          console.log(json);
+        this.accountService.getUserAccounts(this.userService.getUser, (userService) => {
+          console.log(userService?.accounts)
         });
+
         console.log(transaction)
 
         if (transaction.settledBalance == undefined){
@@ -110,11 +129,8 @@ export class TransactionService {
         transaction = json;
         this.transactions.unshift(transaction);
 
-        this.accountService.getAccountForUser(this.userService.user!).subscribe(json => {
-          this.accountService.accounts = json;
-          console.log(json);
-        });
-        console.log(transaction)
+        this.accountService.getUserAccounts(this.userService.getUser);
+      });
 
       // Here we check if the backend has place the new balance into this transaction.
       // (Major error if it hasn't - problem with backend)
@@ -122,17 +138,55 @@ export class TransactionService {
         throw new Error("withdrawal(): transaction failed - settled balance is undefined");
       }
 
-    });
-
       return transaction;
     }
 
     emptyTransactionArray(): void{
       this.transactions = [];
     }
+    public refreshTransactionArray(user : Pick<User, "userId">){
+      this.getTransactionsForUser(user).subscribe(json => {
+        console.log("TransactionService.refreshTransctionArray()");
 
+        this.accountService.getUserAccounts(this.userService.getUser, () => {
+          //console.log(json);
 
-    public getTransactionsForAccount(account : Account) {
-      
+          // get an array of transaction arrays
+          let transArr : (Transaction[] | undefined)[] = this.accountService.accounts
+            // filter out undefined data
+            .filter(account => account != undefined )
+            .filter(account => account.transactions != undefined)
+            
+            // associate each transaction with the proper MoneyAccount
+            .map(account => {
+              account.transactions?.forEach(transaction => {
+                transaction.moneyAccount = account
+              });
+              return account;
+            })
+            // return an array of transaction arrays
+            .map(account => account.transactions);
+
+          // reduce nested array to a single array
+          if (transArr !== undefined){
+            let trans : Transaction[] = transArr
+              .reduce( (prev, curr) => {
+                if( prev == undefined && curr === undefined) {
+                  return [];
+                } else if ( curr === undefined ){
+                  return prev;
+                }
+                
+                return prev?.concat(curr)
+                
+              }, [])!;
+
+              this.transactions = trans;
+              //console.log(trans);
+          }
+        });
+
+      })
     }
+
 }

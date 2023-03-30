@@ -5,6 +5,9 @@ import { Account } from '../model/account';
 import { User } from '../model/user';
 import { UserService } from './user.service';
 
+type AccountServiceCallback = (accountService?: AccountService) => void;
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,6 +16,7 @@ export class AccountService {
   constructor(private httpClient: HttpClient, private userService : UserService) { }
 
   accounts : Account[] = [];
+
 
   //create account
   postAccount(account:Account) : Observable<Account> {
@@ -30,7 +34,7 @@ export class AccountService {
     return this.httpClient.get<Account[]>(`http://127.0.0.1:9000/account`, { headers: header });
   }
 
-  getAccountForUser(user : User) : Observable<Account[]> {
+  private getAccountForUser(user : User) : Observable<Account[]> {
 
     if(user.userId == null || user.userId == undefined) {
       throw new Error("getAccountForUser(): missing user ID");
@@ -40,6 +44,17 @@ export class AccountService {
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*");
     return this.httpClient.get<Account[]>(`http://127.0.0.1:9000/account/user/${user.userId}`, { headers: header });
+  }
+
+  public getUserAccounts(user: User, callback? : AccountServiceCallback){
+    this.getAccountForUser(user).subscribe(json => {
+      this.accounts = json;
+
+      if ( callback !== undefined ) {
+        callback(this);
+      }
+
+    })
   }
 
   emptyAccountsArray(): void {
