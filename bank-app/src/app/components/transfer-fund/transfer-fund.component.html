@@ -5,21 +5,21 @@
 
 <div class="col" *ngFor="let account of this.accountService.accounts">
     <div class="form-check">
-        <input class="form-check-input" name="from" type="radio" value="account.accountId" (click)="setFrom(account)">
+        <input class="form-check-input" name="transfer" type="radio" (click)="setFrom(account)">
         <label class="form-check-output">Account # {{account.accountId}} - {{account.accountType}} Account : ${{account.balance}}</label>
     </div>
 </div>
 <hr>
 <p>Transfer To:</p>
-<div class="col" *ngFor="let account of this.accountService.accounts; let i = index">
+<div class="col" *ngFor="let account of this.accountService.accounts">
     <div class="form-check">
-        <input class="form-check-input" name="to" type="radio" value="account.accountId" (click)="setTo(account)">
+        <input class="form-check-input" name="to" type="radio" (click)="setTo(account)">
         <label class="form-check-output">Account # {{account.accountId}} - {{account.accountType}} Account : ${{account.balance}}</label>
     </div>
 </div>
 <hr>
 <input class="form-control" type="number" [(ngModel)]="transaction.amount">
 <br>
-<button class="btn btn-warning" (click) = 'transfer()' (click)="test()">Transfer</button>
-
-
+<button class="btn btn-warning" (click)='transfer()'>Transfer</button>
+<ngb-alert type="danger" *ngIf="show">{{ message }}</ngb-alert>
+<ngb-alert type="success" *ngIf="show2">{{ message2 }}</ngb-alert>
