@@ -5,16 +5,16 @@
 
 <div class="col" *ngFor="let account of this.accountService.accounts">
     <div class="form-check">
-        <input class="form-check-input" name="from" type="radio" [id]="from">
+        <input class="form-check-input" name="from" type="radio" value="account.accountId" (click)="setFrom(account)">
         <label class="form-check-output">Account # {{account.accountId}} - {{account.accountType}} Account : ${{account.balance}}</label>
     </div>
 </div>
 <hr>
 <p>Transfer To:</p>
-<div class="col" *ngFor="let account of this.accountService.accounts">
+<div class="col" *ngFor="let account of this.accountService.accounts; let i = index">
     <div class="form-check">
-        <input class="form-check-input" name="to" type="radio" [id]="to">
-        <label class="form-check-output">Account # {{account.accountId}} - {{account.accountType}} Account : ${{account.balance}}</label>
+        <input class="form-check-input" name="to" type="radio" value="account.accountId" (click)="setTo(account)">
+        <label class="form-check-output">{{i}} Account # {{account.accountId}} - {{account.accountType}} Account : ${{account.balance}}</label>
     </div>
 </div>
 <hr>
