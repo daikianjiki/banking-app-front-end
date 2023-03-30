@@ -36,9 +36,10 @@ export class AccountSummaryComponent {
         return curBal + prevBal;
       });
 
-    this.lastTransactions = this.transactionService.transactions.slice(0, 10);
+      this.lastTransactions = this.transactionService.transactions.slice(0, 10);
 
     this.accounts = this.accountService.accounts;
-    console.log(this.accounts);
+    //console.log(this.accounts);
+    //console.log(this.accounts[0].transactions);
   }
 }

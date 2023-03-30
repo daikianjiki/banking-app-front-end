@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { User } from '../model/user';
 import { AccountService } from './account.service';
 import { NavbarService } from './navbar.service';
+import { TransactionService } from './transaction.service';
 import { UserService } from './user.service';
 
 @Injectable({
@@ -18,7 +19,8 @@ export class LoginServiceService {
               private userService : UserService, 
               private routerService : Router,
               private navbarService : NavbarService,
-              private accountService : AccountService) {            
+              private accountService : AccountService,
+              private transactionService : TransactionService) {            
   }
 
   setUser(user: User){
@@ -83,9 +85,11 @@ export class LoginServiceService {
         this.userService.user = json;
         this.userService.loggedIn = true;
 
-        this.accountService.getAccountForUser(this.userService.user).subscribe(json => {
-          this.accountService.accounts = json;
+        this.accountService.getUserAccounts(this.userService.getUser, () => {
+          console.log("LoginService.login()");
         })
+
+        this.transactionService.refreshTransactionArray(this.userService.user);
 
         this.routerService.navigate(["/user"]);
         this.navbarService.setSelected("user");

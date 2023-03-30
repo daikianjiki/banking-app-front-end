@@ -17,6 +17,22 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
+    // getters and setters
+    get getUser() : User {
+      if (this.user === undefined) {
+        throw new Error("UserService.getUser: user is undefined");
+      }
+      return this.user;
+    }
+    set setUser(user : User) {
+      if (user === undefined) {
+        throw new Error("UserService.setUser: user is undefined");
+      }
+      this.user = user;
+    }
+
+
+
     //post a user. This will allow a user to login.
     postUser(user: User) : Observable<User> {
       let header: HttpHeaders = new HttpHeaders();
