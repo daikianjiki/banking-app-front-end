@@ -13,9 +13,6 @@ export class TransferFundComponent{
 
   constructor(public accountService : AccountService, private transactionService : TransactionService) {}
 
-  accounts : Account[] = this.accountService.accounts;
-  account: Account = {};
-  amount : number = 0;
   transaction : Transaction  = {
     transactionId: 0,
     timestamp: 0,
@@ -27,41 +24,43 @@ export class TransferFundComponent{
 
   from : Account = {}
   to : Account = {}
+  show : boolean = false;
+  show2 : boolean = false;
+  message : string = "Insufficient funds!"
+  message2 : string = "Transfer was successful!"
 
   transfer() : void {
-    const currentDate = new Date();
-    let deposit : Transaction  = {transactionType: "Deposit", amount: this.transaction.amount};
-    let withdraw : Transaction  = {transactionType: "Withdraw", amount: this.transaction.amount};
-    deposit.timestamp = currentDate.getTime();
-    deposit.description = "Deposited Amount: " + this.transaction.amount;
-    deposit.transactionType = "Deposit"
-    deposit.moneyAccount = {accountId: this.to.accountId};
 
-    this.transactionService.deposit(deposit);
-
-    withdraw.timestamp = currentDate.getTime();
-    withdraw.description = "Withdrawal Amount: " + this.transaction.amount;
-    withdraw.transactionType = "Withdraw"
-    withdraw.moneyAccount = {accountId: this.from.accountId};
-
-    this.transactionService.withdraw(withdraw)
-
+    if (this.from.balance != undefined && this.from.balance < this.transaction.amount) {
+      this.show = true;
+    } else {
+      this.show2 = true;
+      const currentDate = new Date();
+      let deposit : Transaction  = {transactionType: "Deposit", amount: this.transaction.amount};
+      let withdraw : Transaction  = {transactionType: "Withdraw", amount: this.transaction.amount};
+  
+        deposit.timestamp = currentDate.getTime();
+        deposit.description = "Deposited Amount: " + this.transaction.amount;
+        deposit.transactionType = "Deposit"
+        deposit.moneyAccount = {accountId: this.to.accountId};
+    
+        this.transactionService.deposit(deposit);
+        
+        withdraw.timestamp = currentDate.getTime();
+        withdraw.description = "Withdrawal Amount: " + this.transaction.amount;
+        withdraw.transactionType = "Withdraw"
+        withdraw.moneyAccount = {accountId: this.from.accountId};
+        
+        this.transactionService.withdraw(withdraw)
+    }
   }
 
+  // functions below will set the selected radio button to the account to dynamically 
+  // set the depost to and withdraw from.
   setFrom(e : Account) : void {
     this.from = e;
   }
   setTo(e : Account) : void {
     this.to = e;
   }
-
-  test() {
-    let elem = document.getElementsByName("to");
-    let elem2 = document.getElementsByName("from");
-    console.log(elem);
-    console.log(elem2);
-    console.log("test");
-  }
-  
-
 }
