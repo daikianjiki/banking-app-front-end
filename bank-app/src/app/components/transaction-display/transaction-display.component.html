@@ -1,9 +1,28 @@
-<div *ngFor = "let transaction of allTransaction">
-    <p>Transaction # {{transaction.transactionId}}</p>
-    <br>
-    <p>$ {{transaction.amount}}</p>
-    <br>
-    <p>{{transaction.transactionType}}</p>
-    <br>
+<div width=50% *ngFor = "let transaction of this.transactionService.transactions">
+
+    <style>
+        table, td, th{
+            border: 1px solid;
+            padding: 5px;
+        }
+        table{
+            width: 50%;
+        }
+        th{
+            height: 50%;
+        }
+    </style>
+    <table>
+        <tr>
+            <th> Transaction# </th>
+            <th> Amount </th>
+            <th> Transaction Type </th>
+        </tr>
+        <tr>
+            <td>{{transaction.transactionId}}</td>
+            <td>$ {{transaction.amount}}</td>
+            <td>{{transaction.transactionType}}</td>
+        </tr>
+    </table>
     
 </div>

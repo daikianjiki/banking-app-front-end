@@ -29,10 +29,10 @@ export class SubtractFundComponent {
   }
 
 constructor(
-      private transactionService : TransactionService,
+      public transactionService : TransactionService,
       private router : Router,
       private userService : UserService,
-      private accountService : AccountService
+      public accountService : AccountService
    ) { }
 
 /**
@@ -44,14 +44,7 @@ goToOtherRoute() {
 postWithdraw(): void {
 
     const currentDate = new Date();
-    let transaction : Transaction  = {
-      transactionId: 0,
-      timestamp: 0,
-      description: '',
-      transactionType: '',
-      amount: this.transaction.amount,
-      balance: 0
-    }
+    let transaction : Transaction  = {transactionType: "Withdraw", amount: this.transaction.amount};
 
     transaction.timestamp = currentDate.getTime();
 

@@ -1,7 +1,7 @@
 <div class="main-content">
 	<h2>Please make a transaction!</h2>
 
-<div class="d-flex">
+<div class="d-flex" >
 	<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical">
 		<li ngbNavItem="top">
 			<a ngbNavLink>Deposit</a>
@@ -22,7 +22,7 @@
 			</ng-template>
 		</li>
 		<li ngbNavItem="bottom">
-			<a ngbNavLink>All Transactions</a>
+			<a ngbNavLink width="30">All Transactions</a>
 			<ng-template ngbNavContent>
 				<app-transaction-display>
 				</app-transaction-display>
@@ -32,6 +32,5 @@
 
 	<div [ngbNavOutlet]="nav" class="ms-4"></div>
 </div>
-
 <!-- <pre>Active: {{ active }}</pre> -->
 </div>
