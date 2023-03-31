@@ -28,6 +28,11 @@ export class TransferFundComponent{
   show2 : boolean = false;
   message : string = "Insufficient funds!"
   message2 : string = "Transfer was successful!"
+  fromId : number | undefined = this.from.accountId
+  toId : number | undefined = this.from.accountId
+  disable : number | undefined = 0
+  disable2 : number | undefined = 0
+
 
   transfer() : void {
 
@@ -59,8 +64,12 @@ export class TransferFundComponent{
   // set the depost to and withdraw from.
   setFrom(e : Account) : void {
     this.from = e;
+    this.disable2 = this.from.accountId;
+
   }
   setTo(e : Account) : void {
     this.to = e;
+    this.disable = this.to.accountId;
+
   }
 }
