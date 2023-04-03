@@ -20,6 +20,6 @@
 <hr>
 <input class="form-control" type="number" [(ngModel)]="transaction.amount">
 <br>
-<button class="btn btn-warning" (click)='transfer()'>Transfer</button>
+<button class="btn btn-warning" (click)='transfer()' (click)="refresh()">Transfer</button>
 <ngb-alert type="danger" *ngIf="show">{{ message }}</ngb-alert>
 <ngb-alert type="success" *ngIf="show2">{{ message2 }}</ngb-alert>

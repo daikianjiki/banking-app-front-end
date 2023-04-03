@@ -58,9 +58,12 @@ export class TransferFundComponent{
         
         this.transactionService.withdraw(withdraw)
         
-        this.disable = 0;
-        this.disable2 = 0;
-    }
+      }
+  }
+
+  refresh(){
+    this.disable = 0;
+    this.disable2 = 0;
   }
 
   // functions below will set the selected radio button to the account to dynamically 
