@@ -20,10 +20,20 @@
 </form>
 <ul>
     <li>
-        <a routerLink = '/user'>Create New Account</a>
+        <a href="#" (click)="open(content)">Create New Account</a>
     </li>
     <!-- we may not do this but just as a placeholder -->
     <li>
         <a routerLink = '#'>Forgot Password</a>
     </li>
 </ul>
+
+<ng-template #content let-c="close" let-d="dismiss">
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">User Registration</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<app-create-user></app-create-user>
+	</div>
+</ng-template>

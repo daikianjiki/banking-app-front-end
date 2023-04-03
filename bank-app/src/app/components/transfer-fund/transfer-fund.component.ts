@@ -57,6 +57,9 @@ export class TransferFundComponent{
         withdraw.moneyAccount = {accountId: this.from.accountId};
         
         this.transactionService.withdraw(withdraw)
+        
+        this.disable = 0;
+        this.disable2 = 0;
     }
   }
 
