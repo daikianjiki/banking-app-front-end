@@ -25,7 +25,6 @@ export class CreateUserComponent {
       console.log(this.user); 
       this.newUser = this.user; 
       console.log(this.newUser)});
-
       this.show = true;
       this.show2 = false;
   }
@@ -33,7 +32,6 @@ export class CreateUserComponent {
   ngOnInit() :void {
     if (this.userService.loggedIn && this.userService.user != undefined) {
       this.newUser = this.userService.user;
-      
       this.show2 = false;
       this.show3 = true;
     }
