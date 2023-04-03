@@ -1,5 +1,10 @@
-#details {
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 10px;
+table {
+    table-layout: fixed;
+    max-width: 25%;
+}
+
+th, td {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden
 }

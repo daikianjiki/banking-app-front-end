@@ -1,9 +1,21 @@
 <h3>Active Accounts:</h3>
 <br>
-<div class="col-sm-4" *ngFor="let account of this.accountService.accounts">
-
-    <p>Account #: {{account.accountId}}</p>
-    <p>Account Type: {{account.accountType}}</p>
-    <p>Account Balance: ${{account.balance}}</p>
+<div *ngFor="let account of this.accountService.accounts">
+    <table class="table table-striped table-hover">
+        <tbody>
+            <tr>
+                <th>Account #:</th>
+                <td>{{ account.accountId }}</td>
+            </tr>
+            <tr>
+                <th>Account Type:</th>
+                <td>{{ account.accountType }}</td>
+            </tr>
+            <tr>
+                <th>Account Balance:</th>
+                <td>$ {{ account.balance }}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
