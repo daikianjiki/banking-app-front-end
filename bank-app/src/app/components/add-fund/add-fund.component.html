@@ -10,7 +10,7 @@
             Last Deposit: {{
                     (this.transactionService.transactions[0] == undefined 
                         ? 0
-                        : this.transactionService.transactions[0].settledBalance
+                        : this.transactionService.transactions[0].amount
                     ) | currency
                 }}
         </p>

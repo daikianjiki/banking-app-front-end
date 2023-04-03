@@ -165,7 +165,7 @@ export class TransactionService {
               return account;
             })
             // return an array of transaction arrays
-            .map(account => account.transactions);
+            .map(account => account.transactions)
 
           // reduce nested array to a single array
           if (transArr !== undefined){
@@ -179,7 +179,8 @@ export class TransactionService {
                 
                 return prev?.concat(curr)
                 
-              }, [])!;
+              }, [])!
+              .sort((a, b) => b.transactionId! - a.transactionId! );
 
               this.transactions = trans;
               //console.log(trans);
