@@ -3,7 +3,7 @@
         <label class="col-12">Input Amount:</label>
         <input  type = "number" min="0" value="" [(ngModel)]="transaction.amount">
         <p style="margin-left: 25px;"></p>
-        <button class="btn btn-primary" (click) ="thanksMessage()" (click)="postDeposit()">Deposit
+        <button class="btn btn-primary" (click) ="thanksMessage()" (click)="postDeposit()" >Deposit
         </button>
         <p>{{buttonClickMessage}}</p>
         <p id="last-deposit-text">
@@ -14,11 +14,14 @@
                     ) | currency
                 }}
         </p>
-
-        <p style="margin-left: 25px;">Select Account</p>
-
-        <select style="margin-left: 20px;" width="50">
-            <option *ngFor="let account of this.accountService.accounts" value="accountId">Account {{account.accountId}}</option>
-        </select>
+<br>
+        <p style="margin-left: 2px">Select Account</p>
+        <div class="col" *ngFor="let account of this.accountService.accounts">
+            <div class="form-check">
+                <input class="form-check-input" name="to" type="radio" (click)="setTo(account)">
+                <label class="form-check-output">Account # {{account.accountId}} - {{account.accountType}} Account : ${{account.balance}}</label>
+            </div>
+        </div>
     </div>
+    
 

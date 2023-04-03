@@ -7,9 +7,12 @@
     <p>{{buttonClickMessage}}</p>
     <p>$ {{this.transactionService.transactions[0] == undefined ? 0.00 : this.transactionService.transactions[0].settledBalance}}</p>
 
-    <select style="margin-left: 20px;" width="50">
-        <option *ngFor="let account of this.accountService.accounts" value="accountId">Account {{account.accountId}}</option>
-    </select>
+    <div class="col" *ngFor="let account of this.accountService.accounts">
+        <div class="form-check">
+            <input class="form-check-input" name="to" type="radio" (click)="setFrom(account)">
+            <label class="form-check-output">Account # {{account.accountId}} - {{account.accountType}} Account : ${{account.balance}}</label>
+        </div>
+    </div>
 </div>
 
 

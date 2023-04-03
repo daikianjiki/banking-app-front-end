@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { Account } from 'src/app/model/account';
 import { Transaction } from 'src/app/model/transaction';
 import { AccountService } from 'src/app/services/account.service';
 import { TransactionService } from 'src/app/services/transaction.service';
@@ -20,6 +21,8 @@ export class SubtractFundComponent {
     amount: 0,
     balance: 0
   }
+
+  from : Account = {}
 
   //inputAmount: Number = 0;
   buttonClickMessage = "";
@@ -50,9 +53,13 @@ postWithdraw(): void {
 
     transaction.description = "Withdrawal Amount: " + this.transaction.amount;
     transaction.transactionType = "Withdraw"
-    transaction.moneyAccount = {accountId: this.accountService.accounts[0].accountId};
+    transaction.moneyAccount = {accountId: this.from.accountId};
 
     this.transactionService.withdraw(transaction);
+  }
+
+  setFrom(e : Account) : void {
+    this.from = e;
   }
 
 }
