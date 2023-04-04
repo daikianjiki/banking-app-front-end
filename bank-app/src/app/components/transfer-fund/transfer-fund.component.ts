@@ -9,6 +9,7 @@ import { TransactionService } from 'src/app/services/transaction.service';
   templateUrl: './transfer-fund.component.html',
   styleUrls: ['./transfer-fund.component.css']
 })
+
 export class TransferFundComponent {
 
   constructor(public accountService : AccountService, private transactionService : TransactionService) {}

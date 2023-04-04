@@ -4,20 +4,23 @@
     </h2>
     <table class="table table-striped table-dark">
         <thead>
-          <tr class="account-table-header">
-            <th scope="col">#</th>
-            <th scope="col">Account ID</th>
-            <th scope="col">Type</th>
-            <th scope="col">Remaining Balance</th>
-          </tr>
+            <tr class="account-table-header">
+            <tr class="account-table-header">
+                <th scope="col">#</th>
+                <th scope="col">Account ID</th>
+                <th scope="col">Type</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Remaining Balance</th>
+            </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let transaction of this.transactionService.transactions; let i = index">
-            <th scope="row">{{i}}</th>
+            <tr *ngFor="let transaction of this.transactionService.transactions; let i = index">
+            <th scope="row">{{i+1}}</th>
             <td class="account-id">{{transaction.moneyAccount?.accountId}}</td>
             <td class="account-type">{{transaction.transactionType}}</td>
+            <td class="account-type">{{transaction.amount | currency}}</td>
             <td class="account-balance">{{transaction.settledBalance | currency}}</td>
-          </tr>
+            </tr>
         </tbody>
     </table>
 </section>

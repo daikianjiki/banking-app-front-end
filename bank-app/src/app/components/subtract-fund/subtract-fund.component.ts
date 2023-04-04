@@ -40,7 +40,7 @@ postWithdraw(): void {
       && this.from.accountId != undefined
       && this.transaction.amount > 0
       && this.from.balance != undefined
-      && this.from.balance > this.transaction.amount
+      && this.from.balance >= this.transaction.amount
     ){
 
       const currentDate = new Date();
