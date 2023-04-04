@@ -42,14 +42,17 @@
                     <th scope="col">#</th>
                     <th scope="col">Account ID</th>
                     <th scope="col">Type</th>
+                    <th scope="col">Amount</th>
+
                     <th scope="col">Remaining Balance</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let transaction of this.lastTransactions; let i = index">
-                    <th scope="row">{{i}}</th>
+                    <th scope="row">{{i+1}}</th>
                     <td class="account-id">{{transaction.moneyAccount?.accountId}}</td>
                     <td class="account-type">{{transaction.transactionType}}</td>
+                    <td class="account-type">{{transaction.amount | currency}}</td>
                     <td class="account-balance">{{transaction.settledBalance | currency}}</td>
                   </tr>
                 </tbody>
