@@ -2,10 +2,11 @@
     <label class="col-12">Input Amount:</label>
     <input type = "number" min="0" value="" [(ngModel)]="transaction.amount">
     <p style="margin-left: 25px;"></p>
-    <button class="btn btn-primary" (click) = "thanksMessage()" (click)="postWithdraw()" >Withdrawal
+    <button class="btn btn-primary" (click)="postWithdraw()" >Withdrawal
     </button>
     <p>{{buttonClickMessage}}</p>
-    <p>$ -{{this.transactionService.transactions[0] == undefined ? 0.00 : this.transactionService.transactions[0].amount | currency}}</p>
+    <p>{{this.transactionService.lastWithdraw == undefined ? "" : this.transactionService.lastWithdraw | currency}}</p>
+    <br/>
 
     <div class="col" *ngFor="let account of this.accountService.accounts">
         <div class="form-check">

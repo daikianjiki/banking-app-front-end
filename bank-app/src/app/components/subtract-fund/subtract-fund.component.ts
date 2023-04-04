@@ -27,10 +27,6 @@ export class SubtractFundComponent {
   //inputAmount: Number = 0;
   buttonClickMessage = "";
 
-  thanksMessage() {
-    this.buttonClickMessage = "Thanks for your withdrawal!"
-  }
-
 constructor(
       public transactionService : TransactionService,
       private router : Router,
@@ -38,28 +34,29 @@ constructor(
       public accountService : AccountService
    ) { }
 
-/**
-goToOtherRoute() {
-  this.router.navigate(['/account'])
-}
-**/
-
 postWithdraw(): void {
-
-    const currentDate = new Date();
-    let transaction : Transaction  = {transactionType: "Withdraw", amount: this.transaction.amount};
-
-    transaction.timestamp = currentDate.getTime();
-
-    transaction.description = "Withdrawal Amount: " + this.transaction.amount;
-    transaction.transactionType = "Withdraw"
-    transaction.moneyAccount = {accountId: this.from.accountId};
-
-    this.transactionService.withdraw(transaction);
+    if (this.transaction.amount !== undefined && this.transaction.amount > 0){
+      const currentDate = new Date();
+      let transaction : Transaction  = {transactionType: "Withdraw", amount: this.transaction.amount};
+  
+      transaction.timestamp = currentDate.getTime();
+  
+      transaction.description = "Withdrawal Amount: " + this.transaction.amount;
+      transaction.transactionType = "Withdraw"
+      transaction.moneyAccount = {accountId: this.from.accountId};
+  
+      this.transactionService.lastWithdraw = this.transaction.amount;
+      this.transactionService.withdraw(transaction);
+  
+      this.thanksMessage();
+    }
   }
 
   setFrom(e : Account) : void {
     this.from = e;
   }
 
+  thanksMessage() {
+    this.buttonClickMessage = "Thanks for your withdrawal!"
+  }
 }

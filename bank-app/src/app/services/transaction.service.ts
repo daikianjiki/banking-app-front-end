@@ -20,6 +20,8 @@ export class TransactionService {
     ) { }
     
     transactions : Transaction[] = [];
+    lastWithdraw : number | undefined;
+    lastDeposit  : number | undefined;
 
     //get all transaction on a list to see it on display for each account
     getTransactionsAPI() : Observable<Transaction[]> {

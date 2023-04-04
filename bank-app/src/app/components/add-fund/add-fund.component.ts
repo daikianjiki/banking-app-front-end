@@ -27,9 +27,7 @@ export class AddFundComponent {
   buttonClickMessage = "";
   selectAccount: any;
 
-  thanksMessage() {
-    this.buttonClickMessage = "Thanks for your deposit!";
-  }
+
 
   constructor(
     private userService : UserService, 
@@ -44,17 +42,26 @@ export class AddFundComponent {
   to : Account = {}
 
   postDeposit(): void {
+    if (this.transaction.amount !== undefined && this.transaction.amount > 0){
 
-    const currentDate = new Date();
-    let transaction : Transaction  = {transactionType: "Deposit", amount: this.transaction.amount};
+      const currentDate = new Date();
+      let transaction : Transaction  = {transactionType: "Deposit", amount: this.transaction.amount};
 
-    transaction.timestamp = currentDate.getTime();
-    transaction.description = "Deposited Amount: " + this.transaction.amount;
-    transaction.transactionType = "Deposit"
-    // transaction.moneyAccount = {accountId: this.to.accountId};
-    transaction.moneyAccount = {accountId: this.to.accountId};
+      transaction.timestamp = currentDate.getTime();
+      transaction.description = "Deposited Amount: " + this.transaction.amount;
+      transaction.transactionType = "Deposit"
+      // transaction.moneyAccount = {accountId: this.to.accountId};
+      transaction.moneyAccount = {accountId: this.to.accountId};
 
-    this.transactionService.deposit(transaction);
+      this.transactionService.lastDeposit = this.transaction.amount;
+      this.transactionService.deposit(transaction);
+
+      this.thanksMessage();
+    }
+  }
+
+  thanksMessage() {
+    this.buttonClickMessage = "Thanks for your deposit!";
   }
 
   setTo(e : Account): void{
