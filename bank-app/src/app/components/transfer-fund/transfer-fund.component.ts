@@ -9,7 +9,7 @@ import { TransactionService } from 'src/app/services/transaction.service';
   templateUrl: './transfer-fund.component.html',
   styleUrls: ['./transfer-fund.component.css']
 })
-export class TransferFundComponent{
+export class TransferFundComponent {
 
   constructor(public accountService : AccountService, private transactionService : TransactionService) {}
 
@@ -36,31 +36,45 @@ export class TransferFundComponent{
 
   transfer() : void {
 
-    if (this.from.balance != undefined && this.from.balance < this.transaction.amount) {
-      this.show = true;
-    } else {
-      this.show2 = true;
-      const currentDate = new Date();
-      let deposit : Transaction  = {transactionType: "Deposit", amount: this.transaction.amount};
-      let withdraw : Transaction  = {transactionType: "Withdraw", amount: this.transaction.amount};
-  
-        deposit.timestamp = currentDate.getTime();
+// make sure from and to accounts are selected
+    if (this.to.accountId != undefined && this.from.accountId != undefined){
+
+// check account balances
+      if (this.from.balance != undefined && this.from.balance < this.transaction.amount) {
+        this.show = true;
+      } else if (this.transaction.balance == 0) {
+// do nothing if the transaction balance is 0
+      } else {
+
+// Complete the transfer
+        this.show2 = true;
+        const currentTime = new Date().getTime();
+
+        let deposit : Transaction  = {transactionType: "Deposit", amount: this.transaction.amount};
+        let withdraw : Transaction  = {transactionType: "Withdraw", amount: this.transaction.amount};
+
+// deposit transction
+        deposit.timestamp = currentTime;
         deposit.description = "Deposited Amount: " + this.transaction.amount;
         deposit.transactionType = "Deposit"
         deposit.moneyAccount = {accountId: this.to.accountId};
     
         this.transactionService.deposit(deposit);
-        
-        withdraw.timestamp = currentDate.getTime();
+
+// withdraw transaction
+        withdraw.timestamp = currentTime;
         withdraw.description = "Withdrawal Amount: " + this.transaction.amount;
         withdraw.transactionType = "Withdraw"
         withdraw.moneyAccount = {accountId: this.from.accountId};
         
         this.transactionService.withdraw(withdraw)
-        
-      }
-  }
 
+// restart account selection
+        this.refresh()
+      }
+    }
+  }
+  
   refresh(){
     this.disable = 0;
     this.disable2 = 0;
