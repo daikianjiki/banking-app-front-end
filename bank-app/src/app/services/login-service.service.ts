@@ -97,6 +97,7 @@ export class LoginServiceService {
 
         // run callback function if provided
         if (callback != undefined) callback(this);
+
       }
     });
   }

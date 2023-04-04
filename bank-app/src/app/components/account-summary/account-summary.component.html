@@ -24,7 +24,7 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let account of this.accounts; let i = index">
-                    <th scope="row">{{i}}</th>
+                    <th scope="row">{{i+1}}</th>
                     <td class="account-id">{{account.accountId}}</td>
                     <td class="account-type">{{account.accountType}}</td>
                     <td class="account-balance">{{account.balance | currency}}</td>

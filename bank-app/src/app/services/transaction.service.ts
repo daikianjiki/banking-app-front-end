@@ -132,21 +132,20 @@ export class TransactionService {
         this.transactions.unshift(transaction);
 
         this.accountService.getUserAccounts(this.userService.getUser);
+
+        // Here we check if the backend has place the new balance into this transaction.
+        // (Major error if it hasn't - problem with backend)
+        if (transaction.settledBalance == undefined){
+          throw new Error("withdrawal(): transaction failed - settled balance is undefined");
+        }
       });
-
-      // Here we check if the backend has place the new balance into this transaction.
-      // (Major error if it hasn't - problem with backend)
-      if (transaction.settledBalance == undefined){
-        throw new Error("withdrawal(): transaction failed - settled balance is undefined");
-      }
-
       return transaction;
     }
 
     emptyTransactionArray(): void{
       this.transactions = [];
     }
-    public refreshTransactionArray(user : Pick<User, "userId">){
+    public refreshTransactionArray(user : Pick<User, "userId">, callback? : Function){
       this.getTransactionsForUser(user).subscribe(json => {
         console.log("TransactionService.refreshTransctionArray()");
 
@@ -186,9 +185,9 @@ export class TransactionService {
 
               this.transactions = trans;
               //console.log(trans);
+              callback && callback();
           }
         });
-
       })
     }
 

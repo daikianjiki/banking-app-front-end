@@ -1,19 +1,23 @@
-<h3>Active Accounts:</h3>
-<br>
-    <table class="table table-striped table-hover">
-        <tbody *ngFor="let account of this.accountService.accounts">
-            <tr class="table-group-divider">
-                <th>Account #:</th>
-                <td>{{ account.accountId }}</td>
-            </tr>
-            <tr class="table-group-divider">
-                <th>Account Type:</th>
-                <td>{{ account.accountType }}</td>
-            </tr>
+<section>
+    <h2>Active Accounts</h2>
+
+    <table class="table table-striped table-hover table-dark w-70">
+        <thead>
             <tr>
-                <th>Account Balance:</th>
-                <td>$ {{ account.balance }}</td>
+                <th scope="col">#</th>
+                <th scope="col">Account Number</th>
+                <th scope="col">Account Type</th>
+                <th scope="col">Account Balance</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let account of this.accounts; let i = index">
+                <th scope="row">{{i+1}}</th>
+                <td class="account-id">{{account.accountId}}</td>
+                <td class="account-type">{{account.accountType}}</td>
+                <td class="account-balance">{{account.balance | currency}}</td>
             </tr>
         </tbody>
     </table>
+</section>
 

@@ -1,3 +1,9 @@
 input:disabled + label {
     color: #ccc;
 }
+
+h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    padding-bottom: 1rem;
+}

@@ -1,21 +1,43 @@
 <div>
-    <label class="col-12">Input Amount:</label>
-    <input type = "number" min="0" value="" [(ngModel)]="transaction.amount">
-    <p style="margin-left: 25px;"></p>
-    <button class="btn btn-primary" (click)="postWithdraw()" >Withdrawal
-    </button>
-    <p>{{buttonClickMessage}}</p>
-    <p>{{this.transactionService.lastWithdraw == undefined ? "" : this.transactionService.lastWithdraw | currency}}</p>
-    <br/>
+    <section>
+        <h3>Enter Withdrawal</h3>
+        <form>
+            <div>
+                <label for="mySelect">Select Account</label>
+                <select 
+                    id="mySelect" 
+                    (change)="onSelect($event)"
+                    >
+                    <option>--- Select an account --- </option>
+                    <option 
+                        *ngFor="let account of this.accountService.accounts" 
+                        value={{account.accountId}}
 
-    <div class="col" *ngFor="let account of this.accountService.accounts">
-        <div class="form-check">
-            <input class="form-check-input" name="to" type="radio" (click)="setFrom(account)">
-            <label class="form-check-output">Account # {{account.accountId}} - {{account.accountType}} Account : ${{account.balance}}</label>
-        </div>
-    </div>
-</div>
+                        >
+                        Account # {{account.accountId}} - {{account.accountType}} : Balance {{account.balance | currency}}
+                    </option>
+                </select>
+            </div>
 
+            <div *ngIf="showInputBox">
+                <label for="input-amount" class="col-12">Withdrawal Amount:</label>
+                <input  
+                    [ngModelOptions]="{standalone: true}"
+                    id="input-amount" 
+                    type = "number" 
+                    min="0" 
+                    value="0.00" 
+                    [(ngModel)]="transaction.amount">
+            </div>
 
+            <div>
+                <button type="button" class="btn btn-primary" (click)="postWithdraw()" >Withdraw</button>
+            </div>
+        </form>
+
+        <p id="message">{{buttonClickMessage}}</p>
+        <p>{{this.transactionService.lastWithdraw == undefined ? "" : this.transactionService.lastWithdraw | currency}}</p>
+
+    </section>
 
 

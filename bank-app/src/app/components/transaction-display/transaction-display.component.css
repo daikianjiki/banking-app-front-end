@@ -1,0 +1,10 @@
+table {
+    max-width: 70%;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    padding-bottom: 1rem;
+}

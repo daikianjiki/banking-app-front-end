@@ -1,36 +1,36 @@
 <div class="main-content">
-	<h2>Please make a transaction!</h2>
+	<h2>Transactions</h2>
 
-<div class="d-flex" >
-	<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical">
-		<li ngbNavItem="top">
-			<a ngbNavLink>Deposit</a>
-			<ng-template ngbNavContent>
-				<app-add-fund></app-add-fund>
-			</ng-template>
-		</li>
-		<li ngbNavItem="middle">
-			<a ngbNavLink>Withdrawl</a>
-			<ng-template ngbNavContent>
-				<app-subtract-fund></app-subtract-fund>
-			</ng-template>
-		</li>
-		<li ngbNavItem="next">
-			<a ngbNavLink>Transfer</a>
-			<ng-template ngbNavContent>
-				<app-transfer-fund></app-transfer-fund>
-			</ng-template>
-		</li>
-		<li ngbNavItem="bottom">
-			<a ngbNavLink width="30">All Transactions</a>
-			<ng-template ngbNavContent>
-				<app-transaction-display>
-				</app-transaction-display>
-			</ng-template>
-		</li>
-	</ul>
+	<div class="d-flex" >
+		<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical">
+			<li ngbNavItem="top">
+				<a ngbNavLink>Deposit</a>
+				<ng-template ngbNavContent>
+					<app-add-fund></app-add-fund>
+				</ng-template>
+			</li>
+			<li ngbNavItem="middle">
+				<a ngbNavLink>Withdrawl</a>
+				<ng-template ngbNavContent>
+					<app-subtract-fund></app-subtract-fund>
+				</ng-template>
+			</li>
+			<li ngbNavItem="next">
+				<a ngbNavLink>Transfer</a>
+				<ng-template ngbNavContent>
+					<app-transfer-fund></app-transfer-fund>
+				</ng-template>
+			</li>
+			<li ngbNavItem="bottom">
+				<a ngbNavLink width="30">All Transactions</a>
+				<ng-template ngbNavContent>
+					<app-transaction-display>
+					</app-transaction-display>
+				</ng-template>
+			</li>
+		</ul>
 
-	<div [ngbNavOutlet]="nav" class="ms-4"></div>
-</div>
+		<div id="outlet" [ngbNavOutlet]="nav" class="ms-4"></div>
+	</div>
 <!-- <pre>Active: {{ active }}</pre> -->
 </div>

@@ -26,6 +26,7 @@ export class SubtractFundComponent {
 
   //inputAmount: Number = 0;
   buttonClickMessage = "";
+showInputBox: any;
 
 constructor(
       public transactionService : TransactionService,
@@ -38,6 +39,8 @@ postWithdraw(): void {
     if (this.transaction.amount !== undefined 
       && this.from.accountId != undefined
       && this.transaction.amount > 0
+      && this.from.balance != undefined
+      && this.from.balance > this.transaction.amount
     ){
 
       const currentDate = new Date();
@@ -53,6 +56,7 @@ postWithdraw(): void {
       this.transactionService.withdraw(transaction);
   
       this.thanksMessage();
+      this.showInputBox = false;
     }
   }
 
@@ -62,5 +66,18 @@ postWithdraw(): void {
 
   thanksMessage() {
     this.buttonClickMessage = "Thanks for your withdrawal!"
+  }
+
+  onSelect(event : any) {
+    const target = event.target as HTMLSelectElement;
+    const value = Number.parseInt(target.value);
+    if (value > 0) {
+
+      let accountId : number = value;
+      this.setFrom(this.accountService.accounts.filter(x => x.accountId === accountId)[0])
+      this.showInputBox = true;
+    } else {
+      this.showInputBox = false;
+    }
   }
 }

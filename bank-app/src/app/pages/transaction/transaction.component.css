@@ -9,3 +9,12 @@
     padding: 1rem;
     margin-bottom: 3rem;
 }
+
+#outlet {
+    flex-grow: 1;
+}
+
+
+.display {
+    width: 100%;
+}

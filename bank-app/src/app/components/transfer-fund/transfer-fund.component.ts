@@ -42,7 +42,7 @@ export class TransferFundComponent {
 // check account balances
       if (this.from.balance != undefined && this.from.balance < this.transaction.amount) {
         this.show = true;
-      } else if (this.transaction.balance == 0) {
+      } else if (this.transaction.amount == 0) {
 // do nothing if the transaction balance is 0
       } else {
 

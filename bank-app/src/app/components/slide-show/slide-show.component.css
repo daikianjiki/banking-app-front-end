@@ -1,3 +1,17 @@
 .wrapper > img {
     width: 100%;
 }
+
+.carousel-caption > h3 {
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.carousel-caption > p {
+    font-size: 1rem;
+}
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, .75);
+    padding: 1rem;
+}

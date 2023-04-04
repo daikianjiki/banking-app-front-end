@@ -27,7 +27,9 @@ export class AddFundComponent {
   buttonClickMessage = "";
   selectAccount: any;
 
+  showInputBox : boolean = false;
 
+  selectBox : HTMLSelectElement | null = null;
 
   constructor(
     private userService : UserService, 
@@ -36,9 +38,6 @@ export class AddFundComponent {
     private router : Router
     ) { }
 
-  // goToOtherRoute() {
-  //   this.router.navigate(['/account'])
-  // }
   to : Account = {}
 
   postDeposit(): void {
@@ -60,6 +59,7 @@ export class AddFundComponent {
       this.transactionService.deposit(transaction);
 
       this.thanksMessage();
+      this.showInputBox = false;
     }
   }
 
@@ -71,4 +71,20 @@ export class AddFundComponent {
     this.to = e;
   }
 
+  onSelect(event : any) {
+    const target = event.target as HTMLSelectElement;
+    const value = Number.parseInt(target.value);
+    if (value > 0) {
+
+      let accountId : number = value;
+      this.setTo(this.accountService.accounts.filter(x => x.accountId === accountId)[0])
+      this.showInputBox = true;
+    } else {
+      this.showInputBox = false;
+    }
+  }
+
+  ngOnInit(){
+
+  }
 }
