@@ -11,7 +11,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let account of this.accounts; let i = index">
+            <tr *ngFor="let account of this.accountService.accounts; let i = index">
                 <th scope="row">{{i+1}}</th>
                 <td class="account-id">{{account.accountId}}</td>
                 <td class="account-type">{{account.accountType}}</td>
