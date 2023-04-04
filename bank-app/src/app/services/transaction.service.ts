@@ -128,6 +128,15 @@ export class TransactionService {
     public withdraw(transaction: Transaction) : Transaction {
 
       this.postWithdraw(transaction).subscribe(json => {
+
+        let account: Account | undefined = transaction.moneyAccount;
+
+        transaction = json;
+        
+        if (account != undefined){
+          transaction.moneyAccount = account;
+        }
+        
         transaction = json;
         this.transactions.unshift(transaction);
 
