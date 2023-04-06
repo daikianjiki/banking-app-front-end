@@ -24,14 +24,14 @@ export class AccountService {
     let header: HttpHeaders = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*");
-    return this.httpClient.post<Account>(`http://127.0.0.1:9000/account`, account, {headers:header});
+    return this.httpClient.post<Account>(`http://18.221.74.110:9000/account`, account, {headers:header});
   }
 
   getAllAccounts() : Observable<Account[]> {
     let header: HttpHeaders = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*");
-    return this.httpClient.get<Account[]>(`http://127.0.0.1:9000/account`, { headers: header });
+    return this.httpClient.get<Account[]>(`http://18.221.74.110:9000/account`, { headers: header });
   }
 
   private getAccountForUser(user : User) : Observable<Account[]> {
@@ -43,7 +43,7 @@ export class AccountService {
     let header: HttpHeaders = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*");
-    return this.httpClient.get<Account[]>(`http://127.0.0.1:9000/account/user/${user.userId}`, { headers: header });
+    return this.httpClient.get<Account[]>(`http://18.221.74.110:9000/account/user/${user.userId}`, { headers: header });
   }
 
   public getUserAccounts(user: User, callback? : AccountServiceCallback){

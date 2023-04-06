@@ -28,9 +28,9 @@ export class TransactionService {
       let header: HttpHeaders = new HttpHeaders();
       header.append("accept", "text/json");
       header.append("Access-Control-Allow-Origin", "*");
-      return this.httpClient.get<Transaction[]>(`http://127.0.0.1:9000/Transaction`, { headers: header });
+      return this.httpClient.get<Transaction[]>(`http://18.221.74.110:9000/Transaction`, { headers: header });
 
-      // return this.httpClient.get<Transaction[]>(`http://127.0.0.1:9000/accounts/${id}/Transaction`, { headers: header });
+      // return this.httpClient.get<Transaction[]>(`http://18.221.74.110:9000/accounts/${id}/Transaction`, { headers: header });
     }
 
     /**
@@ -47,7 +47,7 @@ export class TransactionService {
       header.append("Access-Control-Allow-Origin", "*");
       header.append("userId", String(userId));
 
-      return this.httpClient.get<Transaction[]>(`http://127.0.0.1:9000/Transaction`, { headers: header });
+      return this.httpClient.get<Transaction[]>(`http://18.221.74.110:9000/Transaction`, { headers: header });
     }
 
     //post a transaction
@@ -55,21 +55,21 @@ export class TransactionService {
       let header: HttpHeaders = new HttpHeaders();
       header.append("accept", "text/json");
       header.append("Access-Control-Allow-Origin", "*");
-      return this.httpClient.post<Transaction>(`http://127.0.0.1:9000/Transaction`, transaction, { headers: header });
+      return this.httpClient.post<Transaction>(`http://18.221.74.110:9000/Transaction`, transaction, { headers: header });
     }
       //post a transaction
     private postDeposit(transaction: Transaction) : Observable<Transaction> {
       let header: HttpHeaders = new HttpHeaders();
       header.append("accept", "text/json");
       header.append("Access-Control-Allow-Origin", "*");
-      return this.httpClient.post<Transaction>(`http://127.0.0.1:9000/Transaction/deposit`, transaction, { headers: header });
+      return this.httpClient.post<Transaction>(`http://18.221.74.110:9000/Transaction/deposit`, transaction, { headers: header });
     }
     //post a transaction
     private postWithdraw(transaction: Transaction) : Observable<Transaction> {
       let header: HttpHeaders = new HttpHeaders();
       header.append("accept", "text/json");
       header.append("Access-Control-Allow-Origin", "*");
-      return this.httpClient.post<Transaction>(`http://127.0.0.1:9000/Transaction/withdraw`, transaction, { headers: header });
+      return this.httpClient.post<Transaction>(`http://18.221.74.110:9000/Transaction/withdraw`, transaction, { headers: header });
     }
 
     /**
