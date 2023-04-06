@@ -56,7 +56,7 @@ export class LoginServiceService {
     headers.append("accept", "text/json");
     headers.append("Access-Control-Allow-Origin", "*");
 
-    let response = this.httpClient.post<User>(`http://3.101.140.91:9000/login`, user, {headers:headers});
+    let response = this.httpClient.post<User>(`http://54.176.20.91:9000/login`, user, {headers:headers});
     return response;
   }
 
